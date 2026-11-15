@@ -2854,20 +2854,28 @@
             const welcomeToast = document.getElementById('welcomeBannerToast');
             const welcomeClose = document.getElementById('welcomeBannerClose');
 
+            const TOTAL_DURATION = 15000; // 15000ms = 15 giây (đổi thành 10000 cho 10s, 20000 cho 20s)
+
             const bootSteps = [
-                { threshold: 15, text: 'Cấp nguồn hệ thống mạch điện tử DA26KDA...' },
-                { threshold: 40, text: 'Kết nối máy chủ Đại Học Trà Vinh...' },
-                { threshold: 68, text: 'Đồng bộ dữ liệu Ban Cán Sự & BCH Chi Đoàn...' },
-                { threshold: 90, text: 'Nạp hoàn tất hồ sơ 38 thành viên lớp...' },
-                { threshold: 100, text: 'Hệ thống sẵn sàng! Chào mừng bạn!' }
+                { threshold: 16, text: 'Cấp nguồn hệ thống mạch điện tử DA26KDA...' },
+                { threshold: 34, text: 'Kết nối máy chủ Trường Đại Học Trà Vinh (TVU)...' },
+                { threshold: 52, text: 'Xác thực Ban Cán Sự & BCH Chi Đoàn lớp...' },
+                { threshold: 72, text: 'Đồng bộ dữ liệu hồ sơ 38 thành viên DA26KDA...' },
+                { threshold: 90, text: 'Khởi chạy mô phỏng dao động & hiệu ứng giao diện...' },
+                { threshold: 100, text: 'Hệ thống sẵn sàng! Chào mừng bạn đến với DA26KDA!' }
             ];
 
-            let progress = 0;
+            let startTime = null;
+            let rafId = null;
             let isCompleted = false;
+
+            fillEl.style.transition = 'none';
 
             function completePreloader() {
                 if (isCompleted) return;
                 isCompleted = true;
+                if (rafId) cancelAnimationFrame(rafId);
+
                 fillEl.style.width = '100%';
                 percentEl.textContent = '100%';
                 statusEl.textContent = bootSteps[bootSteps.length - 1].text;
@@ -2884,27 +2892,36 @@
                     setTimeout(() => {
                         welcomeToast.classList.remove('is-visible');
                     }, 6800);
-                }, 360);
+                }, 400);
             }
 
-            const timer = setInterval(() => {
-                progress += Math.floor(Math.random() * 7) + 4;
-                if (progress >= 100) {
-                    progress = 100;
-                    clearInterval(timer);
-                    completePreloader();
-                } else {
-                    fillEl.style.width = progress + '%';
-                    percentEl.textContent = progress + '%';
-                    const matchedStep = bootSteps.find(step => progress <= step.threshold);
-                    if (matchedStep) {
-                        statusEl.textContent = matchedStep.text;
-                    }
+            function stepAnimation(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const elapsed = timestamp - startTime;
+                const linearProgress = Math.min(elapsed / TOTAL_DURATION, 1);
+
+                const easedProgress = 1 - Math.pow(1 - linearProgress, 1.35);
+                const exactPercent = easedProgress * 100;
+                const displayPercent = Math.floor(exactPercent);
+
+                fillEl.style.width = exactPercent.toFixed(2) + '%';
+                percentEl.textContent = displayPercent + '%';
+
+                const matchedStep = bootSteps.find(step => displayPercent <= step.threshold);
+                if (matchedStep && statusEl.textContent !== matchedStep.text) {
+                    statusEl.textContent = matchedStep.text;
                 }
-            }, 65);
+
+                if (linearProgress < 1) {
+                    rafId = requestAnimationFrame(stepAnimation);
+                } else {
+                    completePreloader();
+                }
+            }
+
+            rafId = requestAnimationFrame(stepAnimation);
 
             skipBtn.addEventListener('click', () => {
-                clearInterval(timer);
                 completePreloader();
             });
 
@@ -2912,7 +2929,6 @@
                 welcomeToast.classList.remove('is-visible');
             });
         }
-
         function animateHeroCounters() {
             const counters = document.querySelectorAll('.hero-stat-value[data-target]');
             counters.forEach(counter => {
