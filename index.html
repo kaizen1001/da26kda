@@ -4,7 +4,7 @@
     <base target="_top">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lớp DA26KDA - Ngành CNKT Điện - Điện tử A | Đại Học Trà Vinh</title>
+    <title>Lớp DA26KDA - Ngành CNKT Điện - Điện tử A | Trường Đại Học Trà Vinh</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
@@ -12,11 +12,13 @@
         :root {
             --bg-primary: #060b19;
             --bg-secondary: #0f172a;
-            --bg-glass: rgba(15, 23, 42, 0.72);
+            --bg-tertiary: #162038;
+            --bg-glass: rgba(15, 23, 42, 0.74);
             --bg-glass-strong: rgba(10, 16, 34, 0.92);
-            --bg-card-hover: rgba(30, 41, 59, 0.9);
-            --border-glass: rgba(56, 189, 248, 0.22);
-            --border-highlight: rgba(250, 204, 21, 0.48);
+            --bg-card-hover: rgba(30, 41, 59, 0.92);
+            --border-glass: rgba(56, 189, 248, 0.24);
+            --border-subtle: rgba(148, 163, 184, 0.14);
+            --border-highlight: rgba(250, 204, 21, 0.5);
             --text-primary: #f8fafc;
             --text-secondary: #cbd5e1;
             --text-muted: #94a3b8;
@@ -25,13 +27,16 @@
             --neon-indigo: #6366f1;
             --neon-gold: #facc15;
             --neon-emerald: #10b981;
+            --neon-rose: #f43f5e;
             --gradient-primary: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #4f46e5 100%);
             --gradient-gold: linear-gradient(135deg, #f59e0b 0%, #facc15 100%);
+            --gradient-cyan: linear-gradient(135deg, #06b6d4 0%, #38bdf8 100%);
             --gradient-hero: radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.18), transparent 45%),
                              radial-gradient(circle at 80% 30%, rgba(99, 102, 241, 0.14), transparent 45%);
             --shadow-card: 0 12px 32px rgba(2, 6, 23, 0.45);
             --shadow-neon: 0 0 24px rgba(56, 189, 248, 0.28);
             --shadow-gold: 0 0 24px rgba(250, 204, 21, 0.3);
+            --radius-xs: 8px;
             --radius-sm: 10px;
             --radius-md: 14px;
             --radius-lg: 20px;
@@ -44,10 +49,12 @@
         html[data-theme="light"] {
             --bg-primary: #f1f5f9;
             --bg-secondary: #ffffff;
-            --bg-glass: rgba(255, 255, 255, 0.84);
+            --bg-tertiary: #e2e8f0;
+            --bg-glass: rgba(255, 255, 255, 0.86);
             --bg-glass-strong: rgba(255, 255, 255, 0.96);
             --bg-card-hover: rgba(239, 246, 255, 0.96);
-            --border-glass: rgba(37, 99, 235, 0.18);
+            --border-glass: rgba(37, 99, 235, 0.2);
+            --border-subtle: rgba(15, 23, 42, 0.08);
             --border-highlight: rgba(217, 119, 6, 0.45);
             --text-primary: #0f172a;
             --text-secondary: #334155;
@@ -57,6 +64,7 @@
             --neon-indigo: #4f46e5;
             --neon-gold: #d97706;
             --neon-emerald: #059669;
+            --neon-rose: #e11d48;
             --gradient-hero: radial-gradient(circle at 20% 20%, rgba(2, 132, 199, 0.12), transparent 45%),
                              radial-gradient(circle at 80% 30%, rgba(79, 70, 229, 0.1), transparent 45%);
             --shadow-card: 0 10px 25px rgba(15, 23, 42, 0.08);
@@ -102,6 +110,10 @@
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(180deg, var(--neon-cyan), var(--neon-indigo));
             border-radius: 99px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--neon-cyan);
         }
 
         #neural-canvas {
@@ -164,6 +176,22 @@
             animation-delay: -11s;
         }
 
+        .class-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+            display: block;
+        }
+
+        .class-logo-fallback {
+            width: 100%;
+            height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
         .preloader-screen {
             position: fixed;
             inset: 0;
@@ -190,7 +218,7 @@
             position: absolute;
             inset: 0;
             background-image:
-                radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.12) 0%, transparent 65%),
+                radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.14) 0%, transparent 65%),
                 linear-gradient(to right, rgba(56, 189, 248, 0.06) 1px, transparent 1px),
                 linear-gradient(to bottom, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
             background-size: 100% 100%, 36px 36px, 36px 36px;
@@ -199,8 +227,8 @@
 
         .preloader-core-wrapper {
             position: relative;
-            width: 190px;
-            height: 190px;
+            width: 215px;
+            height: 215px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -219,7 +247,7 @@
             border-right-color: rgba(56, 189, 248, 0.3);
             border-bottom-color: #6366f1;
             animation: spinClockwise 2.8s linear infinite;
-            box-shadow: 0 0 24px rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 26px rgba(56, 189, 248, 0.35);
         }
 
         .preloader-ring-middle {
@@ -231,7 +259,7 @@
         }
 
         .preloader-ring-inner {
-            inset: 36px;
+            inset: 34px;
             border: 1px dashed rgba(56, 189, 248, 0.55);
             animation: spinClockwise 6s linear infinite;
         }
@@ -239,39 +267,23 @@
         .preloader-emblem {
             position: relative;
             z-index: 2;
-            width: 86px;
-            height: 86px;
+            width: 116px;
+            height: 116px;
             border-radius: 50%;
-            background: linear-gradient(145deg, rgba(30, 58, 138, 0.9), rgba(15, 23, 42, 0.95));
-            border: 1px solid rgba(56, 189, 248, 0.5);
+            background: linear-gradient(145deg, rgba(30, 58, 138, 0.95), rgba(15, 23, 42, 0.98));
+            border: 2px solid rgba(56, 189, 248, 0.65);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.45), inset 0 0 18px rgba(56, 189, 248, 0.25);
+            overflow: hidden;
+            box-shadow: 0 0 35px rgba(56, 189, 248, 0.5), inset 0 0 18px rgba(56, 189, 248, 0.25);
             animation: pulseCore 1.8s ease-in-out infinite;
-        }
-
-        .preloader-bolt {
-            width: 34px;
-            height: 34px;
-            fill: #facc15;
-            filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.8));
-        }
-
-        .preloader-code-tag {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: #38bdf8;
-            letter-spacing: 1px;
-            margin-top: 2px;
         }
 
         .preloader-welcome-box {
             text-align: center;
             z-index: 2;
-            max-width: 540px;
+            max-width: 560px;
             width: 100%;
         }
 
@@ -302,11 +314,11 @@
 
         .preloader-progress-track {
             width: 100%;
-            height: 8px;
+            height: 9px;
             background: rgba(30, 41, 59, 0.9);
             border-radius: 99px;
             overflow: hidden;
-            border: 1px solid rgba(56, 189, 248, 0.25);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
             margin-bottom: 0.85rem;
         }
@@ -317,7 +329,6 @@
             background: linear-gradient(90deg, #0ea5e9, #38bdf8, #facc15);
             border-radius: 99px;
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.75);
-            transition: width 0.16s ease-out;
         }
 
         .preloader-telemetry {
@@ -332,23 +343,26 @@
 
         .preloader-status-text {
             color: #38bdf8;
+            text-align: left;
         }
 
         .preloader-percent {
-            font-weight: 700;
+            font-weight: 800;
             color: #facc15;
             font-size: 0.95rem;
+            flex-shrink: 0;
+            margin-left: 0.75rem;
         }
 
         .preloader-skip-btn {
-            background: rgba(56, 189, 248, 0.12);
+            background: rgba(56, 189, 248, 0.14);
             color: #e0f2fe;
-            border: 1px solid rgba(56, 189, 248, 0.4);
-            padding: 0.6rem 1.4rem;
+            border: 1px solid rgba(56, 189, 248, 0.45);
+            padding: 0.62rem 1.5rem;
             border-radius: 99px;
             font-family: 'Be Vietnam Pro', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.86rem;
+            font-weight: 700;
             cursor: pointer;
             transition: all var(--transition-fast);
         }
@@ -356,7 +370,7 @@
         .preloader-skip-btn:hover {
             background: #38bdf8;
             color: #060b19;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.65);
             transform: translateY(-2px);
         }
 
@@ -441,7 +455,7 @@
         .nav-container {
             max-width: 1260px;
             margin: 0 auto;
-            padding: 0.85rem 1.5rem;
+            padding: 0.8rem 1.5rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -457,20 +471,22 @@
         }
 
         .nav-logo-badge {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
+            width: 48px;
+            height: 48px;
+            border-radius: 13px;
             background: var(--gradient-primary);
+            border: 1.5px solid rgba(56, 189, 248, 0.55);
             display: flex;
             align-items: center;
             justify-content: center;
             font-family: 'JetBrains Mono', monospace;
             font-weight: 800;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             color: #ffffff;
             box-shadow: 0 0 18px rgba(56, 189, 248, 0.4);
             position: relative;
             overflow: hidden;
+            flex-shrink: 0;
         }
 
         .nav-logo-badge::after {
@@ -483,6 +499,7 @@
             background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.35), transparent);
             transform: rotate(45deg);
             animation: shimmerSweep 3.5s infinite;
+            pointer-events: none;
         }
 
         .nav-brand-text {
@@ -500,7 +517,7 @@
 
         .nav-brand-sub {
             font-size: 0.74rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--neon-cyan);
             letter-spacing: 0.5px;
         }
@@ -508,16 +525,16 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.35rem;
             list-style: none;
         }
 
         .nav-link {
             text-decoration: none;
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 600;
-            padding: 0.55rem 0.95rem;
+            padding: 0.52rem 0.9rem;
             border-radius: 99px;
             transition: all var(--transition-fast);
         }
@@ -573,7 +590,7 @@
             position: relative;
             z-index: 1;
             background: var(--gradient-hero);
-            padding: 5.5rem 1.5rem 4.5rem;
+            padding: 5.2rem 1.5rem 4.2rem;
             overflow: hidden;
         }
 
@@ -581,7 +598,7 @@
             max-width: 1260px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            grid-template-columns: 1.18fr 0.82fr;
             gap: 3rem;
             align-items: center;
         }
@@ -762,7 +779,7 @@
             backdrop-filter: blur(20px);
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-xl);
-            padding: 2rem;
+            padding: 1.85rem;
             box-shadow: var(--shadow-card), var(--shadow-neon);
             position: relative;
             overflow: hidden;
@@ -782,8 +799,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 1.4rem;
-            padding-bottom: 1rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.9rem;
             border-bottom: 1px solid var(--border-glass);
         }
 
@@ -809,19 +826,58 @@
             font-weight: 700;
         }
 
+        .hud-logo-showcase {
+            display: flex;
+            align-items: center;
+            gap: 1.15rem;
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.14), rgba(79, 70, 229, 0.14));
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            margin-bottom: 1.25rem;
+        }
+
+        .hud-logo-frame {
+            width: 78px;
+            height: 78px;
+            border-radius: 18px;
+            background: radial-gradient(circle at center, #1e3a8a, #090f24);
+            border: 2px solid rgba(56, 189, 248, 0.6);
+            box-shadow: 0 0 22px rgba(56, 189, 248, 0.38);
+            overflow: hidden;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hud-logo-caption-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .hud-logo-caption-sub {
+            font-size: 0.8rem;
+            color: var(--neon-cyan);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
         .oscilloscope-box {
-            background: rgba(6, 11, 25, 0.85);
+            background: rgba(6, 11, 25, 0.88);
             border: 1px solid rgba(56, 189, 248, 0.28);
             border-radius: var(--radius-md);
-            padding: 1rem;
-            margin-bottom: 1.4rem;
+            padding: 0.85rem;
+            margin-bottom: 1.25rem;
             position: relative;
             overflow: hidden;
         }
 
         .oscilloscope-svg {
             width: 100%;
-            height: 95px;
+            height: 78px;
             display: block;
         }
 
@@ -847,14 +903,14 @@
         .hud-info-list {
             display: flex;
             flex-direction: column;
-            gap: 0.85rem;
+            gap: 0.75rem;
         }
 
         .hud-info-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.7rem 0.95rem;
+            padding: 0.65rem 0.95rem;
             border-radius: var(--radius-sm);
             background: rgba(56, 189, 248, 0.06);
             border: 1px solid rgba(56, 189, 248, 0.14);
@@ -932,7 +988,7 @@
 
         .section-header {
             text-align: center;
-            max-width: 720px;
+            max-width: 740px;
             margin: 0 auto 3rem;
         }
 
@@ -1077,8 +1133,8 @@
         }
 
         .leader-avatar {
-            width: 68px;
-            height: 68px;
+            width: 78px;
+            height: 78px;
             border-radius: 50%;
             background: var(--gradient-primary);
             color: #ffffff;
@@ -1086,16 +1142,28 @@
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             margin-bottom: 1rem;
             box-shadow: 0 8px 20px rgba(59, 130, 246, 0.35);
-            border: 2px solid rgba(255, 255, 255, 0.25);
+            border: 2.5px solid rgba(56, 189, 248, 0.55);
             position: relative;
+        }
+
+        .leader-avatar img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            border-radius: 50%;
+            z-index: 1;
         }
 
         .leader-card.is-chief .leader-avatar {
             background: var(--gradient-gold);
             color: #0f172a;
+            border-color: rgba(250, 204, 21, 0.75);
             box-shadow: 0 8px 22px rgba(245, 158, 11, 0.4);
         }
 
@@ -1103,13 +1171,14 @@
             position: absolute;
             bottom: -4px;
             right: -6px;
+            z-index: 2;
             background: var(--bg-primary);
             color: var(--neon-cyan);
             border: 1px solid var(--border-glass);
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.68rem;
             font-weight: 700;
-            padding: 0.1rem 0.42rem;
+            padding: 0.1rem 0.44rem;
             border-radius: 99px;
         }
 
@@ -1318,7 +1387,7 @@
 
         .members-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
             gap: 1.15rem;
             transition: all var(--transition-smooth);
         }
@@ -1333,7 +1402,7 @@
             backdrop-filter: blur(14px);
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-md);
-            padding: 1.15rem 1.25rem;
+            padding: 1.1rem 1.25rem;
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -1378,7 +1447,7 @@
         }
 
         .student-card.has-role {
-            border-color: rgba(250, 204, 21, 0.32);
+            border-color: rgba(250, 204, 21, 0.35);
         }
 
         .student-card.has-role::after {
@@ -1386,15 +1455,17 @@
         }
 
         .student-stt-badge {
-            width: 38px;
-            height: 38px;
-            border-radius: 11px;
+            position: relative;
+            overflow: hidden;
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
             background: rgba(56, 189, 248, 0.12);
-            border: 1px solid rgba(56, 189, 248, 0.28);
+            border: 1.5px solid rgba(56, 189, 248, 0.35);
             color: var(--neon-cyan);
             font-family: 'JetBrains Mono', monospace;
-            font-weight: 700;
-            font-size: 0.85rem;
+            font-weight: 800;
+            font-size: 0.88rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1402,14 +1473,25 @@
             transition: all var(--transition-fast);
         }
 
+        .student-stt-badge img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            z-index: 2;
+        }
+
         .student-card:hover .student-stt-badge {
             background: var(--neon-cyan);
             color: #060b19;
+            border-color: var(--neon-cyan);
         }
 
         .student-card.has-role .student-stt-badge {
             background: rgba(250, 204, 21, 0.16);
-            border-color: rgba(250, 204, 21, 0.4);
+            border-color: rgba(250, 204, 21, 0.45);
             color: var(--neon-gold);
         }
 
@@ -1476,6 +1558,72 @@
         .empty-search-desc {
             font-size: 0.92rem;
             color: var(--text-muted);
+        }
+
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .curriculum-card {
+            background: var(--bg-glass);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 1.85rem 1.65rem;
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition-bounce);
+        }
+
+        .curriculum-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--neon-cyan);
+            box-shadow: var(--shadow-neon);
+        }
+
+        .curriculum-icon-box {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: rgba(56, 189, 248, 0.14);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.45rem;
+            margin-bottom: 1.15rem;
+        }
+
+        .curriculum-title {
+            font-size: 1.18rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.55rem;
+        }
+
+        .curriculum-desc {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.15rem;
+        }
+
+        .curriculum-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+
+        .curriculum-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.22);
+            padding: 0.25rem 0.65rem;
+            border-radius: 99px;
         }
 
         .campus-showcase-grid {
@@ -1740,22 +1888,41 @@
             border-bottom: 1px solid var(--border-glass);
         }
 
-        .footer-brand-title {
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
+        .footer-brand-row {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.85rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .footer-logo-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 13px;
+            background: var(--gradient-primary);
+            border: 1.5px solid rgba(56, 189, 248, 0.5);
+            overflow: hidden;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-brand-title {
+            font-size: 1.35rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
         }
 
         .footer-brand-badge {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             background: var(--gradient-primary);
             color: #ffffff;
-            padding: 0.2rem 0.6rem;
+            padding: 0.2rem 0.55rem;
             border-radius: 6px;
         }
 
@@ -1846,9 +2013,9 @@
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
-            padding: 0.55rem 1.2rem;
+            padding: 0.55rem 1.25rem;
             border-radius: 99px;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 58, 138, 0.85));
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 58, 138, 0.88));
             border: 1px solid rgba(56, 189, 248, 0.45);
             color: #f8fafc;
             text-decoration: none;
@@ -1899,7 +2066,7 @@
             background: var(--bg-secondary);
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-xl);
-            max-width: 460px;
+            max-width: 470px;
             width: 100%;
             padding: 2.25rem 2rem;
             position: relative;
@@ -1938,22 +2105,33 @@
         }
 
         .modal-avatar-ring {
-            width: 88px;
-            height: 88px;
+            width: 98px;
+            height: 98px;
             border-radius: 50%;
             margin: 0 auto 1.15rem;
             background: var(--gradient-primary);
+            border: 3px solid rgba(56, 189, 248, 0.65);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.85rem;
+            font-size: 1.9rem;
             font-weight: 900;
             color: #ffffff;
+            overflow: hidden;
             box-shadow: 0 0 28px rgba(56, 189, 248, 0.45);
+        }
+
+        .modal-avatar-ring img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            display: block;
         }
 
         .modal-avatar-ring.is-leader {
             background: var(--gradient-gold);
+            border-color: rgba(250, 204, 21, 0.8);
             color: #0f172a;
             box-shadow: 0 0 28px rgba(250, 204, 21, 0.45);
         }
@@ -1984,9 +2162,23 @@
         }
 
         .modal-student-meta {
-            font-size: 0.88rem;
+            font-size: 0.86rem;
             color: var(--text-muted);
-            margin-bottom: 1.25rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .modal-specialty-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.85rem;
+            border-radius: 99px;
+            background: rgba(99, 102, 241, 0.16);
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            color: var(--text-primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.1rem;
         }
 
         .modal-quote-box {
@@ -2145,6 +2337,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .curriculum-grid {
+                grid-template-columns: 1fr;
+            }
+
             .campus-showcase-grid {
                 grid-template-columns: 1fr;
             }
@@ -2235,14 +2431,34 @@
             <div class="preloader-ring preloader-ring-middle"></div>
             <div class="preloader-ring preloader-ring-inner"></div>
             <div class="preloader-emblem">
-                <svg class="preloader-bolt" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/>
-                </svg>
-                <span class="preloader-code-tag">DA26KDA</span>
+                <img src="images/logo.png" alt="Logo Lớp DA26KDA" class="class-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="class-logo-fallback">
+                    <svg viewBox="0 0 120 120" width="100%" height="100%" aria-hidden="true">
+    <defs>
+        <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0ea5e9"/>
+            <stop offset="50%" stop-color="#1d4ed8"/>
+            <stop offset="100%" stop-color="#0f172a"/>
+        </linearGradient>
+        <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fde047"/>
+            <stop offset="100%" stop-color="#f59e0b"/>
+        </linearGradient>
+    </defs>
+    <rect x="6" y="6" width="108" height="108" rx="24" fill="url(#shieldGrad)" stroke="#38bdf8" stroke-width="2.5"/>
+    <path d="M22 30 H98 M22 90 H98 M30 22 V98 M90 22 V98" stroke="rgba(186,230,253,0.18)" stroke-width="1"/>
+    <path d="M60 22 L46 66 H74 Z M51 44 H69 M48 56 H72" fill="none" stroke="#bae6fd" stroke-width="2.2" stroke-linejoin="round"/>
+    <circle cx="60" cy="40" r="10" fill="rgba(250,204,21,0.22)" stroke="url(#goldAccent)" stroke-width="2"/>
+    <path d="M48 27 Q60 16 72 27 Z" fill="url(#goldAccent)"/>
+    <rect x="24" y="69" width="72" height="22" rx="6" fill="rgba(6,11,25,0.85)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="60" y="84" text-anchor="middle" fill="#ffffff" font-family="JetBrains Mono, monospace" font-weight="800" font-size="13.5" letter-spacing="0.8">DA26KDA</text>
+    <text x="60" y="103" text-anchor="middle" fill="#facc15" font-family="Be Vietnam Pro, sans-serif" font-weight="700" font-size="7.5" letter-spacing="1.2">TVU • ĐIỆN - ĐIỆN TỬ</text>
+</svg>
+                </div>
             </div>
         </div>
         <div class="preloader-welcome-box">
-            <div class="preloader-subtitle"> Đại Học Trà Vinh • TVU</div>
+            <div class="preloader-subtitle">Trường Đại Học Trà Vinh • TVU</div>
             <h2 class="preloader-title">CHÀO MỪNG ĐẾN VỚI DA26KDA</h2>
             <p class="preloader-desc">Ngành Công nghệ Kỹ thuật Điện - Điện tử A • Khóa 2026</p>
             <div class="preloader-progress-track">
@@ -2271,7 +2487,10 @@
     <nav class="navbar" id="mainNavbar">
         <div class="nav-container">
             <a href="#heroSection" class="nav-brand js-scroll-link">
-                <div class="nav-logo-badge">KDA</div>
+                <div class="nav-logo-badge">
+                    <img src="images/logo.png" alt="Logo DA26KDA" class="class-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="class-logo-fallback">KDA</div>
+                </div>
                 <div class="nav-brand-text">
                     <span class="nav-brand-title">LỚP DA26KDA</span>
                     <span class="nav-brand-sub">ĐẠI HỌC TRÀ VINH</span>
@@ -2282,6 +2501,7 @@
                 <li><a href="#heroSection" class="nav-link active js-scroll-link">Tổng quan</a></li>
                 <li><a href="#leadershipSection" class="nav-link js-scroll-link">BCS &amp; BCH</a></li>
                 <li><a href="#directorySection" class="nav-link js-scroll-link">38 Thành viên</a></li>
+                <li><a href="#curriculumSection" class="nav-link js-scroll-link">Chuyên ngành</a></li>
                 <li><a href="#campusSection" class="nav-link js-scroll-link">Nơi học tập</a></li>
                 <li><a href="#milestonesSection" class="nav-link js-scroll-link">Hành trình</a></li>
             </ul>
@@ -2301,7 +2521,7 @@
                         <span class="hero-pill-dot"></span>
                         Tập Thể Chính Quy Khóa 2026
                     </span>
-                    <span class="hero-university-tag">🎓 Đại Học Trà Vinh</span>
+                    <span class="hero-university-tag">🎓 Trường Đại Học Trà Vinh</span>
                 </div>
 
                 <h1 class="hero-title">
@@ -2358,6 +2578,39 @@
                         <span class="hud-status">● ONLINE • TVU NETWORK</span>
                     </div>
 
+                    <div class="hud-logo-showcase">
+                        <div class="hud-logo-frame">
+                            <img src="images/logo.png" alt="Biểu trưng Lớp DA26KDA" class="class-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="class-logo-fallback">
+                                <svg viewBox="0 0 120 120" width="100%" height="100%" aria-hidden="true">
+    <defs>
+        <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0ea5e9"/>
+            <stop offset="50%" stop-color="#1d4ed8"/>
+            <stop offset="100%" stop-color="#0f172a"/>
+        </linearGradient>
+        <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fde047"/>
+            <stop offset="100%" stop-color="#f59e0b"/>
+        </linearGradient>
+    </defs>
+    <rect x="6" y="6" width="108" height="108" rx="24" fill="url(#shieldGrad)" stroke="#38bdf8" stroke-width="2.5"/>
+    <path d="M22 30 H98 M22 90 H98 M30 22 V98 M90 22 V98" stroke="rgba(186,230,253,0.18)" stroke-width="1"/>
+    <path d="M60 22 L46 66 H74 Z M51 44 H69 M48 56 H72" fill="none" stroke="#bae6fd" stroke-width="2.2" stroke-linejoin="round"/>
+    <circle cx="60" cy="40" r="10" fill="rgba(250,204,21,0.22)" stroke="url(#goldAccent)" stroke-width="2"/>
+    <path d="M48 27 Q60 16 72 27 Z" fill="url(#goldAccent)"/>
+    <rect x="24" y="69" width="72" height="22" rx="6" fill="rgba(6,11,25,0.85)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="60" y="84" text-anchor="middle" fill="#ffffff" font-family="JetBrains Mono, monospace" font-weight="800" font-size="13.5" letter-spacing="0.8">DA26KDA</text>
+    <text x="60" y="103" text-anchor="middle" fill="#facc15" font-family="Be Vietnam Pro, sans-serif" font-weight="700" font-size="7.5" letter-spacing="1.2">TVU • ĐIỆN - ĐIỆN TỬ</text>
+</svg>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="hud-logo-caption-title">BIỂU TRƯNG DA26KDA</div>
+                            <div class="hud-logo-caption-sub">Khoa Kỹ thuật và Công nghệ<br>Trường Đại Học Trà Vinh</div>
+                        </div>
+                    </div>
+
                     <div class="oscilloscope-box">
                         <svg class="oscilloscope-svg" viewBox="0 0 420 100" preserveAspectRatio="none">
                             <path class="oscilloscope-wave" d="M0,50 Q25,10 50,50 T100,50 T150,50 T200,50 T250,50 T300,50 T350,50 T400,50 T420,50"/>
@@ -2376,11 +2629,11 @@
                         </div>
                         <div class="hud-info-row">
                             <span class="hud-info-key">Đơn vị đào tạo</span>
-                            <span class="hud-info-val"> Đại Học Trà Vinh</span>
+                            <span class="hud-info-val">Trường Đại Học Trà Vinh</span>
                         </div>
                         <div class="hud-info-row">
                             <span class="hud-info-key">Cơ sở học tập</span>
-                            <span class="hud-info-val">Khu I • Đại Học Trà Vinh</span>
+                            <span class="hud-info-val">Khu I • TP. Trà Vinh</span>
                         </div>
                     </div>
                 </div>
@@ -2390,13 +2643,13 @@
 
     <div class="marquee-strip">
         <div class="marquee-track">
-            <span class="marquee-item"><span class="marquee-badge">TVU</span> ĐẠI HỌC TRÀ VINH — TRƯỜNG KỸ THUẬT VÀ CÔNG NGHỆ</span>
+            <span class="marquee-item"><span class="marquee-badge">TVU</span> TRƯỜNG ĐẠI HỌC TRÀ VINH — KHOA KỸ THUẬT VÀ CÔNG NGHỆ</span>
             <span class="marquee-item"><span class="marquee-badge">DA26KDA</span> NGÀNH CÔNG NGHỆ KỸ THUẬT ĐIỆN - ĐIỆN TỬ A</span>
             <span class="marquee-item"><span class="marquee-badge">SLOGAN</span> ĐOÀN KẾT • SÁNG TẠO • KỶ LUẬT • BỨT PHÁ</span>
             <span class="marquee-item"><span class="marquee-badge">SĨ SỐ</span> 38 THÀNH VIÊN ĐỒNG LÒNG VỮNG BƯỚC</span>
         </div>
         <div class="marquee-track" aria-hidden="true">
-            <span class="marquee-item"><span class="marquee-badge">TVU</span> ĐẠI HỌC TRÀ VINH — TRƯỜNG KỸ THUẬT VÀ CÔNG NGHỆ</span>
+            <span class="marquee-item"><span class="marquee-badge">TVU</span> TRƯỜNG ĐẠI HỌC TRÀ VINH — KHOA KỸ THUẬT VÀ CÔNG NGHỆ</span>
             <span class="marquee-item"><span class="marquee-badge">DA26KDA</span> NGÀNH CÔNG NGHỆ KỸ THUẬT ĐIỆN - ĐIỆN TỬ A</span>
             <span class="marquee-item"><span class="marquee-badge">SLOGAN</span> ĐOÀN KẾT • SÁNG TẠO • KỶ LUẬT • BỨT PHÁ</span>
             <span class="marquee-item"><span class="marquee-badge">SĨ SỐ</span> 38 THÀNH VIÊN ĐỒNG LÒNG VỮNG BƯỚC</span>
@@ -2424,7 +2677,7 @@
                     <div class="bcs-cards-grid">
                         <div class="leader-card is-chief js-student-trigger" data-stt="9">
                             <div class="leader-avatar">
-                                BB
+                                <span>BB</span>
                                 <span class="leader-stt-pill">#09</span>
                             </div>
                             <span class="leader-role-badge">Lớp Trưởng</span>
@@ -2434,7 +2687,7 @@
 
                         <div class="leader-card js-student-trigger" data-stt="17">
                             <div class="leader-avatar">
-                                KD
+                                <span>KD</span>
                                 <span class="leader-stt-pill">#17</span>
                             </div>
                             <span class="leader-role-badge">Lớp Phó Học Tập</span>
@@ -2456,7 +2709,7 @@
                     <div class="bch-cards-grid">
                         <div class="leader-card is-chief js-student-trigger" data-stt="1">
                             <div class="leader-avatar">
-                                TA
+                                <span>TA</span>
                                 <span class="leader-stt-pill">#01</span>
                             </div>
                             <span class="leader-role-badge">Bí Thư Chi Đoàn</span>
@@ -2466,7 +2719,7 @@
 
                         <div class="leader-card js-student-trigger" data-stt="29">
                             <div class="leader-avatar">
-                                PH
+                                <span>PH</span>
                                 <span class="leader-stt-pill">#29</span>
                             </div>
                             <span class="leader-role-badge">Phó Bí Thư</span>
@@ -2476,7 +2729,7 @@
 
                         <div class="leader-card js-student-trigger" data-stt="31">
                             <div class="leader-avatar">
-                                MK
+                                <span>MK</span>
                                 <span class="leader-stt-pill">#31</span>
                             </div>
                             <span class="leader-role-badge">UV Ban Chấp Hành</span>
@@ -2492,7 +2745,7 @@
             <div class="section-header">
                 <div class="section-kicker">Danh Sách Chính Thức</div>
                 <h2 class="section-heading">38 Thành Viên Lớp DA26KDA</h2>
-                <p class="section-subtext">Tra cứu nhanh theo họ tên, lọc theo vai trò Ban cán sự / BCH Chi đoàn hoặc nhấn vào từng thẻ để gửi lời chào.</p>
+                <p class="section-subtext">Tra cứu nhanh theo họ tên, lọc theo vai trò Ban cán sự / BCH Chi đoàn hoặc nhấn vào từng thẻ để xem hồ sơ và thả tim.</p>
             </div>
 
             <div class="directory-toolbar">
@@ -2536,6 +2789,49 @@
             </div>
         </section>
 
+        <section class="content-section" id="curriculumSection">
+            <div class="section-header">
+                <div class="section-kicker">Bản Sắc Kỹ Thuật</div>
+                <h2 class="section-heading">Định Hướng Ngành Điện - Điện Tử A</h2>
+                <p class="section-subtext">Ba trụ cột kiến thức và kỹ năng thực hành giúp sinh viên DA26KDA làm chủ công nghệ trong kỷ nguyên số.</p>
+            </div>
+
+            <div class="curriculum-grid">
+                <div class="curriculum-card">
+                    <div class="curriculum-icon-box">⚡</div>
+                    <h3 class="curriculum-title">Hệ Thống Điện &amp; Năng Lượng</h3>
+                    <p class="curriculum-desc">Thiết kế, vận hành mạng lưới cung cấp điện công nghiệp, trạm biến áp, khí cụ điện và giải pháp năng lượng tái tạo bền vững.</p>
+                    <div class="curriculum-tags">
+                        <span class="curriculum-tag">Cung cấp điện</span>
+                        <span class="curriculum-tag">Máy điện</span>
+                        <span class="curriculum-tag">An toàn điện</span>
+                    </div>
+                </div>
+
+                <div class="curriculum-card">
+                    <div class="curriculum-icon-box">🔌</div>
+                    <h3 class="curriculum-title">Điện Tử Số &amp; Hệ Thống Nhúng</h3>
+                    <p class="curriculum-desc">Phân tích mạch điện tử tương tự, thiết kế bo mạch PCB, lập trình vi điều khiển ESP32/STM32 và phát triển thiết bị IoT thông minh.</p>
+                    <div class="curriculum-tags">
+                        <span class="curriculum-tag">Vi điều khiển</span>
+                        <span class="curriculum-tag">Thiết kế PCB</span>
+                        <span class="curriculum-tag">IoT Smart</span>
+                    </div>
+                </div>
+
+                <div class="curriculum-card">
+                    <div class="curriculum-icon-box">🤖</div>
+                    <h3 class="curriculum-title">Tự Động Hóa &amp; Điều Khiển</h3>
+                    <p class="curriculum-desc">Lập trình điều khiển logic khả trình PLC, giám sát hệ thống SCADA, cảm biến công nghiệp và robot tự hành ứng dụng.</p>
+                    <div class="curriculum-tags">
+                        <span class="curriculum-tag">PLC Siemens</span>
+                        <span class="curriculum-tag">SCADA</span>
+                        <span class="curriculum-tag">Cảm biến</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section class="content-section" id="campusSection">
             <div class="section-header">
                 <div class="section-kicker">Địa Điểm Học Tập &amp; Rèn Luyện</div>
@@ -2547,21 +2843,21 @@
                 <div class="campus-main-card">
                     <div>
                         <div class="campus-tabs" id="campusTabs">
-                            <button type="button" class="campus-tab-btn active" data-tab="tvu-main">🏫 Đại Học Trà Vinh</button>
+                            <button type="button" class="campus-tab-btn active" data-tab="tvu-main">🏫 Trường Đại Học Trà Vinh</button>
                             <button type="button" class="campus-tab-btn" data-tab="faculty-info">⚙️ Khoa Kỹ Thuật &amp; Công Nghệ</button>
                             <button type="button" class="campus-tab-btn" data-tab="major-focus">🔌 Chuyên Ngành Điện - Điện Tử</button>
                         </div>
 
                         <div class="campus-tab-panel active" id="tab-tvu-main">
-                            <h3 class="campus-title"> Đại Học Trà Vinh (TVU)</h3>
+                            <h3 class="campus-title">Trường Đại Học Trà Vinh (TVU)</h3>
                             <div class="campus-subtitle">Cơ sở Khu I • Trung tâm đào tạo &amp; nghiên cứu chính</div>
                             <p class="campus-text">
-                                Tập thể lớp DA26KDA hiện đang theo học hệ đại học chính quy tại Đại học Trà Vinh — ngôi trường đại học công lập trọng điểm khu vực Đồng bằng sông Cửu Long với môi trường học tập xanh, hiện đại và năng động.
+                                Tập thể lớp DA26KDA hiện đang theo học hệ đại học chính quy tại Trường Đại học Trà Vinh — ngôi trường đại học công lập trọng điểm khu vực Đồng bằng sông Cửu Long với môi trường học tập xanh, hiện đại và năng động.
                             </p>
                             <div class="campus-detail-list">
                                 <div class="campus-detail-item">
                                     <div class="campus-detail-label">Địa chỉ cơ sở chính</div>
-                                    <div class="campus-detail-value">Số 126 Nguyễn Thiện Thành, P Hoàn Thuận, Tỉnh Vĩnh Long</div>
+                                    <div class="campus-detail-value">Số 126 Nguyễn Thiện Thành, Khóm 4, Phường 5, TP. Trà Vinh</div>
                                 </div>
                                 <div class="campus-detail-item">
                                     <div class="campus-detail-label">Hệ &amp; Khóa đào tạo</div>
@@ -2580,7 +2876,7 @@
 
                         <div class="campus-tab-panel" id="tab-faculty-info">
                             <h3 class="campus-title">Khoa Kỹ Thuật và Công Nghệ</h3>
-                            <div class="campus-subtitle">Bộ môn Điện - Điện tử • Đại Học Trà Vinh</div>
+                            <div class="campus-subtitle">Bộ môn Điện - Điện tử • Trường Đại Học Trà Vinh</div>
                             <p class="campus-text">
                                 Sinh viên lớp DA26KDA được trang bị hệ thống phòng thí nghiệm mạch điện, vi điều khiển, PLC, tự động hóa công nghiệp và xưởng thực hành kỹ thuật đạt chuẩn kiểm định chất lượng giáo dục.
                             </p>
@@ -2638,7 +2934,7 @@
                         <div class="radar-pin">TVU</div>
                     </div>
                     <div class="radar-coords">09°55'24.5"N 106°20'47.2"E</div>
-                    <h3 class="radar-location-name"> Đại Học Trà Vinh</h3>
+                    <h3 class="radar-location-name">Trường Đại Học Trà Vinh</h3>
                     <p class="radar-location-address">Số 126 Nguyễn Thiện Thành, Phường 5, Thành phố Trà Vinh, Tỉnh Trà Vinh</p>
                     <a href="https://maps.google.com/?q=Truong+Dai+Hoc+Tra+Vinh" target="_blank" rel="noopener noreferrer" class="btn-primary-glow">
                         <span>Mở trên Google Maps</span>
@@ -2687,12 +2983,40 @@
         <div class="footer-container">
             <div class="footer-top-grid">
                 <div>
-                    <div class="footer-brand-title">
-                        <span>LỚP DA26KDA</span>
-                        <span class="footer-brand-badge">TVU • K26</span>
+                    <div class="footer-brand-row">
+                        <div class="footer-logo-box">
+                            <img src="images/logo.png" alt="Logo Lớp DA26KDA" class="class-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="class-logo-fallback">
+                                <svg viewBox="0 0 120 120" width="100%" height="100%" aria-hidden="true">
+    <defs>
+        <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0ea5e9"/>
+            <stop offset="50%" stop-color="#1d4ed8"/>
+            <stop offset="100%" stop-color="#0f172a"/>
+        </linearGradient>
+        <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fde047"/>
+            <stop offset="100%" stop-color="#f59e0b"/>
+        </linearGradient>
+    </defs>
+    <rect x="6" y="6" width="108" height="108" rx="24" fill="url(#shieldGrad)" stroke="#38bdf8" stroke-width="2.5"/>
+    <path d="M22 30 H98 M22 90 H98 M30 22 V98 M90 22 V98" stroke="rgba(186,230,253,0.18)" stroke-width="1"/>
+    <path d="M60 22 L46 66 H74 Z M51 44 H69 M48 56 H72" fill="none" stroke="#bae6fd" stroke-width="2.2" stroke-linejoin="round"/>
+    <circle cx="60" cy="40" r="10" fill="rgba(250,204,21,0.22)" stroke="url(#goldAccent)" stroke-width="2"/>
+    <path d="M48 27 Q60 16 72 27 Z" fill="url(#goldAccent)"/>
+    <rect x="24" y="69" width="72" height="22" rx="6" fill="rgba(6,11,25,0.85)" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="60" y="84" text-anchor="middle" fill="#ffffff" font-family="JetBrains Mono, monospace" font-weight="800" font-size="13.5" letter-spacing="0.8">DA26KDA</text>
+    <text x="60" y="103" text-anchor="middle" fill="#facc15" font-family="Be Vietnam Pro, sans-serif" font-weight="700" font-size="7.5" letter-spacing="1.2">TVU • ĐIỆN - ĐIỆN TỬ</text>
+</svg>
+                            </div>
+                        </div>
+                        <div class="footer-brand-title">
+                            <span>LỚP DA26KDA</span>
+                            <span class="footer-brand-badge">TVU • K26</span>
+                        </div>
                     </div>
                     <p class="footer-about-text">
-                        Trang thông tin điện tử giới thiệu tập thể sinh viên lớp DA26KDA — Ngành Công nghệ Kỹ thuật Điện - Điện tử A, Đại học Trà Vinh.
+                        Trang thông tin điện tử giới thiệu tập thể sinh viên lớp DA26KDA — Ngành Công nghệ Kỹ thuật Điện - Điện tử A, Trường Đại học Trà Vinh.
                     </p>
                     <div class="footer-status-pill">
                         <span>●</span>
@@ -2706,8 +3030,8 @@
                         <li><a href="#heroSection" class="footer-link js-scroll-link">Trang chủ &amp; Tổng quan</a></li>
                         <li><a href="#leadershipSection" class="footer-link js-scroll-link">Ban Cán Sự &amp; BCH Chi Đoàn</a></li>
                         <li><a href="#directorySection" class="footer-link js-scroll-link">Danh sách 38 thành viên</a></li>
+                        <li><a href="#curriculumSection" class="footer-link js-scroll-link">Định hướng chuyên ngành</a></li>
                         <li><a href="#campusSection" class="footer-link js-scroll-link">Hiện đang học tập ở đâu?</a></li>
-                        <li><a href="#milestonesSection" class="footer-link js-scroll-link">Hành trình thanh xuân K26</a></li>
                     </ul>
                 </div>
 
@@ -2725,10 +3049,10 @@
                 <div>
                     <h4 class="footer-col-title">Nơi Đang Học Tập</h4>
                     <div class="footer-campus-box">
-                        <div class="footer-campus-name"> Đại Học Trà Vinh</div>
+                        <div class="footer-campus-name">Trường Đại Học Trà Vinh</div>
                         <p class="footer-campus-addr">
                             Khoa Kỹ thuật và Công nghệ<br>
-                            Số 126 Nguyễn Thiện Thành, Phường Hòa Thuận, Tỉnh Vĩnh Long
+                            Số 126 Nguyễn Thiện Thành, Phường 5, TP. Trà Vinh, Tỉnh Trà Vinh
                         </p>
                     </div>
                 </div>
@@ -2738,7 +3062,7 @@
                 <div class="footer-copyright">
                     © 2026 Tập thể Lớp DA26KDA — Ngành CNKT Điện - Điện tử A (Đại học Trà Vinh). All rights reserved.
                 </div>
-                <a href="http://kimtuanan.id.vn/" target="_blank" rel="noopener noreferrer" class="powered-by-badge">
+                <a href="https://kimtuanan.id.vn" target="_blank" rel="noopener noreferrer" class="powered-by-badge">
                     <span>⚡ Powered by</span>
                     <span class="powered-by-highlight">KTA TEAMS</span>
                     <span>-</span>
@@ -2755,6 +3079,7 @@
             <div class="modal-role-pill" id="modalRolePill">Thành Viên</div>
             <h3 class="modal-student-name" id="modalStudentName">Kim Tuấn An</h3>
             <div class="modal-student-meta" id="modalStudentMeta">STT: #01 • Lớp DA26KDA • Đại Học Trà Vinh</div>
+            <div class="modal-specialty-chip" id="modalSpecialtyChip">⚡ Định hướng: Điều khiển tự động &amp; IoT</div>
             <div class="modal-quote-box" id="modalQuoteBox">
                 "Đoàn kết tạo nên sức mạnh, tri thức thắp sáng tương lai kỹ thuật điện - điện tử."
             </div>
@@ -2769,44 +3094,386 @@
 
     <script>
         const STUDENTS_DATA = [
-            { stt: 1, name: "Kim Tuấn An", role: "Bí Thư Chi Đoàn", group: "bch", quote: "Nhiệt huyết tuổi trẻ, tiên phong dẫn lối phong trào Đoàn lớp DA26KDA!" },
-            { stt: 2, name: "Nguyễn Hoài An", role: "Thành Viên", group: "member", quote: "Học tập hết mình, sẵn sàng chinh phục mọi thử thách chuyên ngành Điện - Điện tử." },
-            { stt: 3, name: "Phan Hoài An", role: "Thành Viên", group: "member", quote: "Đoàn kết cùng tập thể DA26KDA tạo nên những kỷ niệm rực rỡ tại TVU." },
-            { stt: 4, name: "Dương Nguyễn Hoàng Anh", role: "Thành Viên", group: "member", quote: "Không ngừng học hỏi, sáng tạo và bứt phá trên giảng đường đại học." },
-            { stt: 5, name: "Đặng Cao Thái Anh", role: "Thành Viên", group: "member", quote: "Vững kiến thức, chắc tay nghề, tự hào là sinh viên Điện - Điện tử TVU." },
-            { stt: 6, name: "Nguyễn Kha Anh", role: "Thành Viên", group: "member", quote: "Luôn năng động, tích cực trong học tập lẫn các hoạt động văn hóa văn nghệ." },
-            { stt: 7, name: "Nguyễn Lê Duy Anh", role: "Thành Viên", group: "member", quote: "Kiên trì theo đuổi đam mê công nghệ và kỹ thuật hiện đại." },
-            { stt: 8, name: "Trần Ngọc Anh", role: "Thành Viên", group: "member", quote: "Tự hào đồng hành cùng 38 thành viên đại gia đình DA26KDA." },
-            { stt: 9, name: "Biện Bảo Biên", role: "Lớp Trưởng", group: "bcs", quote: "Trách nhiệm, tận tâm, gắn kết tập thể DA26KDA luôn vững mạnh và dẫn đầu!" },
-            { stt: 10, name: "Phan Hoàng Bảo", role: "Thành Viên", group: "member", quote: "Mỗi ngày đến giảng đường Đại học Trà Vinh là một bước tiến mới." },
-            { stt: 11, name: "Sơn Tha Huy Chạch", role: "Thành Viên", group: "member", quote: "Cùng nhau cố gắng, cùng nhau trưởng thành dưới mái nhà DA26KDA." },
-            { stt: 12, name: "Nguyễn Chí Cường", role: "Thành Viên", group: "member", quote: "Bản lĩnh kỹ thuật, tự tin làm chủ công nghệ điện - tự động hóa." },
-            { stt: 13, name: "Võ Cao Cường", role: "Thành Viên", group: "member", quote: "Nỗ lực hôm nay để kiến tạo tương lai vững vàng ngày mai." },
-            { stt: 14, name: "Nguyễn Hoàng Dân", role: "Thành Viên", group: "member", quote: "Sống hết mình với tuổi trẻ K26 Đại học Trà Vinh." },
-            { stt: 15, name: "Cao Hoàng Dỉnh", role: "Thành Viên", group: "member", quote: "Luôn giữ vững tinh thần lạc quan, đoàn kết và ham học hỏi." },
-            { stt: 16, name: "Lê Khánh Duy", role: "Thành Viên", group: "member", quote: "Tập trung mục tiêu, bứt phá giới hạn bản thân trên giảng đường." },
-            { stt: 17, name: "Nguyễn Khánh Duy", role: "Lớp Phó Học Tập", group: "bcs", quote: "Đồng hành hỗ trợ học tập, giúp cả lớp DA26KDA cùng nhau tiến bộ vượt bậc!" },
-            { stt: 18, name: "Sơn Minh Duy", role: "Thành Viên", group: "member", quote: "Học tập sáng tạo, gắn kết anh em trong mọi hoạt động lớp." },
-            { stt: 19, name: "Trần Nhật Duy", role: "Thành Viên", group: "member", quote: "Đam mê mạch điện tử, sẵn sàng trải nghiệm những dự án thực tế." },
-            { stt: 20, name: "Nguyễn Hữu Đan", role: "Thành Viên", group: "member", quote: "Kỷ luật tạo sức mạnh, đoàn kết tạo thành công cho DA26KDA." },
-            { stt: 21, name: "Nguyễn Tú Điền", role: "Thành Viên", group: "member", quote: "Tự hào là một mảnh ghép của tập thể Công nghệ Kỹ thuật Điện - Điện tử A." },
-            { stt: 22, name: "Lâm Quốc Đô", role: "Thành Viên", group: "member", quote: "Luôn sẵn sàng hỗ trợ bạn bè và hết mình vì màu cờ sắc áo lớp." },
-            { stt: 23, name: "Đỗ Thành Đạt", role: "Thành Viên", group: "member", quote: "Chinh phục tri thức kỹ thuật, vững bước tương lai tại TVU." },
-            { stt: 24, name: "Đặng Hoàng Đạt", role: "Thành Viên", group: "member", quote: "Không ngại khó khăn, kiên định với lựa chọn ngành Điện - Điện tử." },
-            { stt: 25, name: "Phan Tuấn Đạt", role: "Thành Viên", group: "member", quote: "Thanh xuân tươi đẹp nhất là được đồng hành cùng tập thể DA26KDA." },
-            { stt: 26, name: "Trần Hoàng Đạt", role: "Thành Viên", group: "member", quote: "Học hỏi không ngừng để làm chủ các hệ thống điện thông minh." },
-            { stt: 27, name: "Nguyễn Thế Hiển", role: "Thành Viên", group: "member", quote: "Tỏa sáng tài năng, nhiệt huyết trong từng hoạt động của lớp và khoa." },
-            { stt: 28, name: "Thạch Nguyễn Hoàng", role: "Thành Viên", group: "member", quote: "Gắn bó, sẻ chia và cùng nhau tạo nên dấu ấn riêng của K26." },
-            { stt: 29, name: "Huỳnh Phước Hậu", role: "Phó Bí Thư", group: "bch", quote: "Sát cánh cùng Chi đoàn DA26KDA lan tỏa năng lượng tích cực và sáng tạo!" },
-            { stt: 30, name: "Nguyễn Quốc Huy", role: "Thành Viên", group: "member", quote: "Tư duy logic, thực hành chuẩn xác, tự tin vươn xa." },
-            { stt: 31, name: "Cao Lê Minh Khang", role: "UV Ban Chấp Hành", group: "bch", quote: "Xung kích, năng động, kết nối mọi thành viên trong các phong trào Đoàn!" },
-            { stt: 32, name: "Lâm Chấn Khang", role: "Thành Viên", group: "member", quote: "Luôn giữ ngọn lửa đam mê kỹ thuật và tinh thần đồng đội." },
-            { stt: 33, name: "Nguyễn Chí Vĩ", role: "Thành Viên", group: "member", quote: "Vững vàng kiến thức nền tảng, sẵn sàng đón đầu công nghệ mới." },
-            { stt: 34, name: "Sơn Kim Hoàng Vũ", role: "Thành Viên", group: "member", quote: "Hết mình vì tập thể DA26KDA — Đại học Trà Vinh." },
-            { stt: 35, name: "Dương Chí Hào", role: "Thành Viên", group: "member", quote: "Tự tin, bản lĩnh và luôn tiến về phía trước cùng anh em K26." },
-            { stt: 36, name: "Đặng Trần Anh Hoàng", role: "Thành Viên", group: "member", quote: "Mỗi thử thách là một cơ hội để hoàn thiện bản thân hơn mỗi ngày." },
-            { stt: 37, name: "Trương Tiến Đạt", role: "Thành Viên", group: "member", quote: "Đam mê sáng tạo kỹ thuật, đồng hành bền bỉ cùng DA26KDA." },
-            { stt: 38, name: "Ngô Công Hậu", role: "Thành Viên", group: "member", quote: "Khép lại danh sách bằng tinh thần đoàn kết trọn vẹn của 38 thành viên!" }
+            {
+                stt: 1,
+                name: "Kim Tuấn An",
+                role: "Bí Thư Chi Đoàn",
+                group: "bch",
+                avatar: "",
+                specialty: "Điều khiển tự động & IoT",
+                unit: "BCH Chi Đoàn",
+                quote: "Nhiệt huyết tuổi trẻ, tiên phong dẫn lối phong trào Đoàn lớp DA26KDA!"
+            },
+            {
+                stt: 2,
+                name: "Nguyễn Hoài An",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Mạch điện tử tương tự",
+                unit: "Tập thể DA26KDA",
+                quote: "Học tập hết mình, sẵn sàng chinh phục mọi thử thách chuyên ngành Điện - Điện tử."
+            },
+            {
+                stt: 3,
+                name: "Phan Hoài An",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Điện tử công suất",
+                unit: "Tập thể DA26KDA",
+                quote: "Đoàn kết cùng tập thể DA26KDA tạo nên những kỷ niệm rực rỡ tại TVU."
+            },
+            {
+                stt: 4,
+                name: "Dương Nguyễn Hoàng Anh",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Kỹ thuật vi điều khiển",
+                unit: "Tập thể DA26KDA",
+                quote: "Không ngừng học hỏi, sáng tạo và bứt phá trên giảng đường đại học."
+            },
+            {
+                stt: 5,
+                name: "Đặng Cao Thái Anh",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Hệ thống cung cấp điện",
+                unit: "Tập thể DA26KDA",
+                quote: "Vững kiến thức, chắc tay nghề, tự hào là sinh viên Điện - Điện tử TVU."
+            },
+            {
+                stt: 6,
+                name: "Nguyễn Kha Anh",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Cảm biến & Đo lường",
+                unit: "Tập thể DA26KDA",
+                quote: "Luôn năng động, tích cực trong học tập lẫn các hoạt động văn hóa văn nghệ."
+            },
+            {
+                stt: 7,
+                name: "Nguyễn Lê Duy Anh",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Lập trình nhúng C/C++",
+                unit: "Tập thể DA26KDA",
+                quote: "Kiên trì theo đuổi đam mê công nghệ và kỹ thuật hiện đại."
+            },
+            {
+                stt: 8,
+                name: "Trần Ngọc Anh",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Kỹ thuật số & Logic",
+                unit: "Tập thể DA26KDA",
+                quote: "Tự hào đồng hành cùng 38 thành viên đại gia đình DA26KDA."
+            },
+            {
+                stt: 9,
+                name: "Biện Bảo Biên",
+                role: "Lớp Trưởng",
+                group: "bcs",
+                avatar: "",
+                specialty: "Quản lý & Điều hành lớp",
+                unit: "Ban Cán Sự Lớp",
+                quote: "Trách nhiệm, tận tâm, gắn kết tập thể DA26KDA luôn vững mạnh và dẫn đầu!"
+            },
+            {
+                stt: 10,
+                name: "Phan Hoàng Bảo",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Truyền động điện",
+                unit: "Tập thể DA26KDA",
+                quote: "Mỗi ngày đến giảng đường Đại học Trà Vinh là một bước tiến mới."
+            },
+            {
+                stt: 11,
+                name: "Sơn Tha Huy Chạch",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Khí cụ điện công nghiệp",
+                unit: "Tập thể DA26KDA",
+                quote: "Cùng nhau cố gắng, cùng nhau trưởng thành dưới mái nhà DA26KDA."
+            },
+            {
+                stt: 12,
+                name: "Nguyễn Chí Cường",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "PLC & SCADA",
+                unit: "Tập thể DA26KDA",
+                quote: "Bản lĩnh kỹ thuật, tự tin làm chủ công nghệ điện - tự động hóa."
+            },
+            {
+                stt: 13,
+                name: "Võ Cao Cường",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Thiết kế mạch PCB",
+                unit: "Tập thể DA26KDA",
+                quote: "Nỗ lực hôm nay để kiến tạo tương lai vững vàng ngày mai."
+            },
+            {
+                stt: 14,
+                name: "Nguyễn Hoàng Dân",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Mạng truyền thông công nghiệp",
+                unit: "Tập thể DA26KDA",
+                quote: "Sống hết mình với tuổi trẻ K26 Trường Đại học Trà Vinh."
+            },
+            {
+                stt: 15,
+                name: "Cao Hoàng Dỉnh",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "An toàn & Bảo vệ hệ thống điện",
+                unit: "Tập thể DA26KDA",
+                quote: "Luôn giữ vững tinh thần lạc quan, đoàn kết và ham học hỏi."
+            },
+            {
+                stt: 16,
+                name: "Lê Khánh Duy",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Điện tử số & FPGA",
+                unit: "Tập thể DA26KDA",
+                quote: "Tập trung mục tiêu, bứt phá giới hạn bản thân trên giảng đường."
+            },
+            {
+                stt: 17,
+                name: "Nguyễn Khánh Duy",
+                role: "Lớp Phó Học Tập",
+                group: "bcs",
+                avatar: "",
+                specialty: "Học thuật & Nghiên cứu khoa học",
+                unit: "Ban Cán Sự Lớp",
+                quote: "Đồng hành hỗ trợ học tập, giúp cả lớp DA26KDA cùng nhau tiến bộ vượt bậc!"
+            },
+            {
+                stt: 18,
+                name: "Sơn Minh Duy",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Năng lượng tái tạo",
+                unit: "Tập thể DA26KDA",
+                quote: "Học tập sáng tạo, gắn kết anh em trong mọi hoạt động lớp."
+            },
+            {
+                stt: 19,
+                name: "Trần Nhật Duy",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Kỹ thuật xung số",
+                unit: "Tập thể DA26KDA",
+                quote: "Đam mê mạch điện tử, sẵn sàng trải nghiệm những dự án thực tế."
+            },
+            {
+                stt: 20,
+                name: "Nguyễn Hữu Đan",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Máy điện & Biến áp",
+                unit: "Tập thể DA26KDA",
+                quote: "Kỷ luật tạo sức mạnh, đoàn kết tạo thành công cho DA26KDA."
+            },
+            {
+                stt: 21,
+                name: "Nguyễn Tú Điền",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Trang bị điện công nghiệp",
+                unit: "Tập thể DA26KDA",
+                quote: "Tự hào là một mảnh ghép của tập thể Công nghệ Kỹ thuật Điện - Điện tử A."
+            },
+            {
+                stt: 22,
+                name: "Lâm Quốc Đô",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Hệ thống nhúng & IoT",
+                unit: "Tập thể DA26KDA",
+                quote: "Luôn sẵn sàng hỗ trợ bạn bè và hết mình vì màu cờ sắc áo lớp."
+            },
+            {
+                stt: 23,
+                name: "Đỗ Thành Đạt",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Điều khiển thông minh",
+                unit: "Tập thể DA26KDA",
+                quote: "Chinh phục tri thức kỹ thuật, vững bước tương lai tại TVU."
+            },
+            {
+                stt: 24,
+                name: "Đặng Hoàng Đạt",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Kỹ thuật điện cao áp",
+                unit: "Tập thể DA26KDA",
+                quote: "Không ngại khó khăn, kiên định với lựa chọn ngành Điện - Điện tử."
+            },
+            {
+                stt: 25,
+                name: "Phan Tuấn Đạt",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Đo lường & Điều khiển tự động",
+                unit: "Tập thể DA26KDA",
+                quote: "Thanh xuân tươi đẹp nhất là được đồng hành cùng tập thể DA26KDA."
+            },
+            {
+                stt: 26,
+                name: "Trần Hoàng Đạt",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Nhà thông minh & Tự động hóa",
+                unit: "Tập thể DA26KDA",
+                quote: "Học hỏi không ngừng để làm chủ các hệ thống điện thông minh."
+            },
+            {
+                stt: 27,
+                name: "Nguyễn Thế Hiển",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Robot & Cơ điện tử",
+                unit: "Tập thể DA26KDA",
+                quote: "Tỏa sáng tài năng, nhiệt huyết trong từng hoạt động của lớp và khoa."
+            },
+            {
+                stt: 28,
+                name: "Thạch Nguyễn Hoàng",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Mạch điện tử ứng dụng",
+                unit: "Tập thể DA26KDA",
+                quote: "Gắn bó, sẻ chia và cùng nhau tạo nên dấu ấn riêng của K26."
+            },
+            {
+                stt: 29,
+                name: "Huỳnh Phước Hậu",
+                role: "Phó Bí Thư",
+                group: "bch",
+                avatar: "",
+                specialty: "Tổ chức phong trào Đoàn",
+                unit: "BCH Chi Đoàn",
+                quote: "Sát cánh cùng Chi đoàn DA26KDA lan tỏa năng lượng tích cực và sáng tạo!"
+            },
+            {
+                stt: 30,
+                name: "Nguyễn Quốc Huy",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Lý thuyết mạch & Tín hiệu",
+                unit: "Tập thể DA26KDA",
+                quote: "Tư duy logic, thực hành chuẩn xác, tự tin vươn xa."
+            },
+            {
+                stt: 31,
+                name: "Cao Lê Minh Khang",
+                role: "UV Ban Chấp Hành",
+                group: "bch",
+                avatar: "",
+                specialty: "Truyền thông & Sự kiện Chi đoàn",
+                unit: "BCH Chi Đoàn",
+                quote: "Xung kích, năng động, kết nối mọi thành viên trong các phong trào Đoàn!"
+            },
+            {
+                stt: 32,
+                name: "Lâm Chấn Khang",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Vi xử lý & Giao tiếp ngoại vi",
+                unit: "Tập thể DA26KDA",
+                quote: "Luôn giữ ngọn lửa đam mê kỹ thuật và tinh thần đồng đội."
+            },
+            {
+                stt: 33,
+                name: "Nguyễn Chí Vĩ",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Điện tử viễn thông cơ bản",
+                unit: "Tập thể DA26KDA",
+                quote: "Vững vàng kiến thức nền tảng, sẵn sàng đón đầu công nghệ mới."
+            },
+            {
+                stt: 34,
+                name: "Sơn Kim Hoàng Vũ",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Kỹ thuật lắp đặt điện",
+                unit: "Tập thể DA26KDA",
+                quote: "Hết mình vì tập thể DA26KDA — Đại học Trà Vinh."
+            },
+            {
+                stt: 35,
+                name: "Dương Chí Hào",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Hệ thống điện & Năng lượng",
+                unit: "Tập thể DA26KDA",
+                quote: "Tự tin, bản lĩnh và luôn tiến về phía trước cùng anh em K26."
+            },
+            {
+                stt: 36,
+                name: "Đặng Trần Anh Hoàng",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Tự động hóa quá trình sản xuất",
+                unit: "Tập thể DA26KDA",
+                quote: "Mỗi thử thách là một cơ hội để hoàn thiện bản thân hơn mỗi ngày."
+            },
+            {
+                stt: 37,
+                name: "Trương Tiến Đạt",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Thiết kế hệ thống chiếu sáng",
+                unit: "Tập thể DA26KDA",
+                quote: "Đam mê sáng tạo kỹ thuật, đồng hành bền bỉ cùng DA26KDA."
+            },
+            {
+                stt: 38,
+                name: "Ngô Công Hậu",
+                role: "Thành Viên",
+                group: "member",
+                avatar: "",
+                specialty: "Vận hành & Bảo trì hệ thống điện",
+                unit: "Tập thể DA26KDA",
+                quote: "Khép lại danh sách bằng tinh thần đoàn kết trọn vẹn của 38 thành viên!"
+            }
         ];
 
         const appState = {
@@ -2821,6 +3488,13 @@
         STUDENTS_DATA.forEach(student => {
             appState.kudosMap[student.stt] = student.group !== 'member' ? 12 : 5;
         });
+
+        function getStudentAvatarUrl(student) {
+            if (student.avatar && student.avatar.trim() !== '') {
+                return student.avatar.trim();
+            }
+            return `images/${student.stt}.jpg`;
+        }
 
         function getInitials(fullName) {
             const parts = fullName.trim().split(/\s+/);
@@ -2854,13 +3528,13 @@
             const welcomeToast = document.getElementById('welcomeBannerToast');
             const welcomeClose = document.getElementById('welcomeBannerClose');
 
-            const TOTAL_DURATION = 15000; // 15000ms = 15 giây (đổi thành 10000 cho 10s, 20000 cho 20s)
+            const TOTAL_DURATION = 15000;
 
             const bootSteps = [
                 { threshold: 16, text: 'Cấp nguồn hệ thống mạch điện tử DA26KDA...' },
                 { threshold: 34, text: 'Kết nối máy chủ Trường Đại Học Trà Vinh (TVU)...' },
                 { threshold: 52, text: 'Xác thực Ban Cán Sự & BCH Chi Đoàn lớp...' },
-                { threshold: 72, text: 'Đồng bộ dữ liệu hồ sơ 38 thành viên DA26KDA...' },
+                { threshold: 72, text: 'Đồng bộ dữ liệu & ảnh đại diện 38 thành viên...' },
                 { threshold: 90, text: 'Khởi chạy mô phỏng dao động & hiệu ứng giao diện...' },
                 { threshold: 100, text: 'Hệ thống sẵn sàng! Chào mừng bạn đến với DA26KDA!' }
             ];
@@ -2929,6 +3603,7 @@
                 welcomeToast.classList.remove('is-visible');
             });
         }
+
         function animateHeroCounters() {
             const counters = document.querySelectorAll('.hero-stat-value[data-target]');
             counters.forEach(counter => {
@@ -2954,6 +3629,23 @@
             });
         }
 
+        function hydrateLeadershipAvatars() {
+            document.querySelectorAll('.js-student-trigger').forEach(card => {
+                const stt = Number(card.getAttribute('data-stt'));
+                const student = STUDENTS_DATA.find(item => item.stt === stt);
+                const avatarBox = card.querySelector('.leader-avatar');
+                if (!student || !avatarBox) return;
+
+                const img = document.createElement('img');
+                img.src = getStudentAvatarUrl(student);
+                img.alt = student.name;
+                img.onerror = function() {
+                    this.remove();
+                };
+                avatarBox.prepend(img);
+            });
+        }
+
         function getFilteredAndSortedStudents() {
             const normalizedQuery = normalizeVietnamese(appState.searchQuery);
 
@@ -2964,11 +3656,13 @@
                 if (!normalizedQuery) return true;
                 const normalizedName = normalizeVietnamese(student.name);
                 const normalizedRole = normalizeVietnamese(student.role);
+                const normalizedSpecialty = normalizeVietnamese(student.specialty);
                 const sttString = String(student.stt);
 
                 return (
                     normalizedName.includes(normalizedQuery) ||
                     normalizedRole.includes(normalizedQuery) ||
+                    normalizedSpecialty.includes(normalizedQuery) ||
                     sttString === normalizedQuery
                 );
             });
@@ -3009,9 +3703,13 @@
 
                 const formattedStt = String(student.stt).padStart(2, '0');
                 const rolePrefix = isLeader ? '★ ' : '• ';
+                const avatarUrl = getStudentAvatarUrl(student);
 
                 card.innerHTML = `
-                    <div class="student-stt-badge">${formattedStt}</div>
+                    <div class="student-stt-badge">
+                        <img src="${avatarUrl}" alt="${student.name}" loading="lazy" onerror="this.remove()">
+                        <span>${formattedStt}</span>
+                    </div>
                     <div class="student-card-info">
                         <div class="student-card-name">${student.name}</div>
                         <div class="student-card-role">${rolePrefix}${student.role}</div>
@@ -3038,21 +3736,25 @@
             const rolePill = document.getElementById('modalRolePill');
             const nameEl = document.getElementById('modalStudentName');
             const metaEl = document.getElementById('modalStudentMeta');
+            const specialtyEl = document.getElementById('modalSpecialtyChip');
             const quoteEl = document.getElementById('modalQuoteBox');
             const kudosCountEl = document.getElementById('modalKudosCount');
             const copyBtn = document.getElementById('modalCopyBtn');
 
             const isLeader = student.group !== 'member';
             const formattedStt = String(student.stt).padStart(2, '0');
+            const initials = getInitials(student.name);
+            const avatarUrl = getStudentAvatarUrl(student);
 
-            avatarRing.textContent = getInitials(student.name);
             avatarRing.className = 'modal-avatar-ring' + (isLeader ? ' is-leader' : '');
+            avatarRing.innerHTML = `<img src="${avatarUrl}" alt="${student.name}" onerror="this.parentElement.textContent='${initials}'">`;
 
             rolePill.textContent = student.role;
             rolePill.className = 'modal-role-pill' + (isLeader ? ' is-leader' : '');
 
             nameEl.textContent = student.name;
-            metaEl.textContent = `STT: #${formattedStt} • Lớp DA26KDA • Ngành CNKT Điện - Điện tử A`;
+            metaEl.textContent = `STT: #${formattedStt} • ${student.unit} • Lớp DA26KDA`;
+            specialtyEl.textContent = `⚡ Quan tâm: ${student.specialty}`;
             quoteEl.textContent = `"${student.quote}"`;
             kudosCountEl.textContent = appState.kudosMap[student.stt] || 1;
             copyBtn.textContent = '📋 Sao chép tên';
@@ -3245,7 +3947,7 @@
                     backToTopBtn.classList.remove('is-visible');
                 }
 
-                const sections = ['heroSection', 'leadershipSection', 'directorySection', 'campusSection', 'milestonesSection'];
+                const sections = ['heroSection', 'leadershipSection', 'directorySection', 'curriculumSection', 'campusSection', 'milestonesSection'];
                 let activeSectionId = 'heroSection';
                 sections.forEach(secId => {
                     const secEl = document.getElementById(secId);
@@ -3377,6 +4079,7 @@
             initDirectoryControls();
             initCampusTabs();
             initModalEvents();
+            hydrateLeadershipAvatars();
             renderMembersDirectory();
         });
     </script>
