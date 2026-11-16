@@ -4,7 +4,7 @@
     <base target="_top">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lớp DA26KDA - Ngành CNKT Điện - Điện tử A | Trường Đại Học Trà Vinh</title>
+    <title>Lớp DA26KDA - Ngành CNKT Điện - Điện tử A | Đại Học Trà Vinh</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
@@ -2420,6 +2420,522 @@
                 text-align: center;
             }
         }
+    
+        .nav-link-notice {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .nav-notice-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--neon-gold);
+            box-shadow: 0 0 10px var(--neon-gold);
+            animation: pulseDot 1.5s infinite;
+            flex-shrink: 0;
+        }
+
+        .btn-notice-glow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.9rem 1.45rem;
+            border-radius: 14px;
+            background: rgba(250, 204, 21, 0.14);
+            backdrop-filter: blur(12px);
+            color: var(--neon-gold);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            border: 1px solid rgba(250, 204, 21, 0.45);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .btn-notice-glow:hover {
+            background: rgba(250, 204, 21, 0.24);
+            border-color: var(--neon-gold);
+            box-shadow: var(--shadow-gold);
+            transform: translateY(-3px);
+        }
+
+        .notice-board-shell {
+            background: var(--bg-glass);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-xl);
+            padding: 2rem;
+            box-shadow: var(--shadow-card);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .notice-board-shell::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-gold), var(--neon-indigo));
+        }
+
+        .notice-top-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1.25rem;
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .notice-badge-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: 99px;
+            background: rgba(250, 204, 21, 0.16);
+            border: 1px solid rgba(250, 204, 21, 0.45);
+            color: var(--neon-gold);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 0.65rem;
+        }
+
+        .notice-main-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.3;
+            margin-bottom: 0.45rem;
+        }
+
+        .notice-lead-text {
+            font-size: 0.96rem;
+            color: var(--text-secondary);
+            max-width: 780px;
+        }
+
+        .notice-view-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+        }
+
+        .notice-tab-btn {
+            padding: 0.6rem 1.05rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-glass);
+            background: var(--bg-glass-strong);
+            color: var(--text-secondary);
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-size: 0.84rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .notice-tab-btn:hover {
+            border-color: var(--neon-cyan);
+            color: var(--neon-cyan);
+        }
+
+        .notice-tab-btn.active {
+            background: var(--gradient-primary);
+            color: #ffffff;
+            border-color: transparent;
+            box-shadow: 0 6px 18px rgba(59, 130, 246, 0.35);
+        }
+
+        .notice-block-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .notice-block-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: var(--gradient-primary);
+            color: #ffffff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .exam-modules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.15rem;
+            margin-bottom: 2rem;
+        }
+
+        .exam-module-card {
+            background: var(--bg-glass-strong);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            padding: 1.35rem 1.4rem;
+            transition: all var(--transition-fast);
+            position: relative;
+        }
+
+        .exam-module-card:hover {
+            border-color: var(--neon-cyan);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-neon);
+        }
+
+        .exam-module-card.is-confirmed {
+            border-color: rgba(56, 189, 248, 0.42);
+        }
+
+        .exam-module-card.is-pending {
+            border-style: dashed;
+            border-color: rgba(250, 204, 21, 0.42);
+        }
+
+        .exam-module-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin-bottom: 0.85rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .exam-module-name {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .exam-time-pill {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0.28rem 0.7rem;
+            border-radius: 99px;
+            background: rgba(56, 189, 248, 0.14);
+            color: var(--neon-cyan);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+
+        .exam-module-card.is-pending .exam-time-pill {
+            background: rgba(250, 204, 21, 0.14);
+            color: var(--neon-gold);
+            border-color: rgba(250, 204, 21, 0.35);
+        }
+
+        .exam-room-rules {
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+
+        .exam-room-rule-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding: 0.55rem 0.85rem;
+            border-radius: var(--radius-xs);
+            background: rgba(56, 189, 248, 0.06);
+            border: 1px solid rgba(56, 189, 248, 0.14);
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        .exam-room-code {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 800;
+            font-size: 0.84rem;
+            padding: 0.2rem 0.65rem;
+            border-radius: 6px;
+            background: rgba(16, 185, 129, 0.16);
+            color: var(--neon-emerald);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            white-space: nowrap;
+        }
+
+        .exam-room-code.is-alt {
+            background: rgba(99, 102, 241, 0.18);
+            color: #a5b4fc;
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        html[data-theme="light"] .exam-room-code.is-alt {
+            color: #4338ca;
+        }
+
+        .exam-pending-note {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            font-style: italic;
+            padding: 0.45rem 0;
+        }
+
+        .mandatory-rules-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2.25rem;
+        }
+
+        .mandatory-rule-card {
+            background: linear-gradient(135deg, rgba(244, 63, 94, 0.1), rgba(250, 204, 21, 0.08));
+            border: 1px solid rgba(250, 204, 21, 0.38);
+            border-radius: var(--radius-md);
+            padding: 1.1rem 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .mandatory-rule-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: rgba(250, 204, 21, 0.18);
+            border: 1px solid rgba(250, 204, 21, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .mandatory-rule-text {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .exam-roster-divider {
+            height: 1px;
+            background: var(--border-glass);
+            margin: 0.5rem 0 2rem;
+        }
+
+        .exam-roster-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .exam-roster-note {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            background: rgba(56, 189, 248, 0.08);
+            border: 1px solid rgba(56, 189, 248, 0.22);
+            border-radius: var(--radius-md);
+            padding: 0.85rem 1.1rem;
+            margin-bottom: 1.35rem;
+        }
+
+        .exam-lookup-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.9rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .exam-quick-result {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            padding: 0.95rem 1.25rem;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.16), rgba(56, 189, 248, 0.14));
+            border: 1px solid rgba(16, 185, 129, 0.45);
+            margin-bottom: 1.35rem;
+            animation: fadeInUp 0.3s ease forwards;
+        }
+
+        .exam-quick-result.is-visible {
+            display: flex;
+        }
+
+        .exam-quick-result-main {
+            font-size: 0.94rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .exam-quick-result-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 0.35rem 0.9rem;
+            border-radius: 99px;
+            background: var(--neon-emerald);
+            color: #060b19;
+        }
+
+        .exam-rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .exam-rooms-grid.is-single-room {
+            grid-template-columns: 1fr;
+        }
+
+        .exam-room-panel {
+            background: var(--bg-glass-strong);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .exam-room-panel-head {
+            padding: 1rem 1.25rem;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.18), rgba(59, 130, 246, 0.16));
+            border-bottom: 1px solid var(--border-glass);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .exam-room-panel.is-room-2 .exam-room-panel-head {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(250, 204, 21, 0.14));
+        }
+
+        .exam-room-panel-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .exam-room-panel-sub {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--neon-cyan);
+        }
+
+        .exam-room-panel.is-room-2 .exam-room-panel-sub {
+            color: var(--neon-gold);
+        }
+
+        .exam-table-wrap {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .exam-roster-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .exam-roster-table th {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            font-size: 0.76rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            color: var(--text-muted);
+            background: rgba(15, 23, 42, 0.35);
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        html[data-theme="light"] .exam-roster-table th {
+            background: rgba(226, 232, 240, 0.65);
+        }
+
+        .exam-roster-table td {
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+        }
+
+        .exam-roster-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .exam-roster-table tbody tr:hover {
+            background: rgba(56, 189, 248, 0.09);
+        }
+
+        .exam-roster-table tbody tr.is-match-highlight {
+            background: rgba(250, 204, 21, 0.18);
+        }
+
+        .exam-stt-cell {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: var(--text-muted);
+            width: 64px;
+        }
+
+        .exam-mssv-cell {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: var(--neon-cyan);
+            width: 125px;
+        }
+
+        .exam-name-cell {
+            font-weight: 600;
+        }
+
+        .notice-section-hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 960px) {
+            .exam-modules-grid,
+            .exam-rooms-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mandatory-rules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .notice-board-shell {
+                padding: 1.35rem 1rem;
+            }
+
+            .notice-main-title {
+                font-size: 1.3rem;
+            }
+        }
+
     </style>
 </head>
 <body class="is-loading">
@@ -2458,7 +2974,7 @@
             </div>
         </div>
         <div class="preloader-welcome-box">
-            <div class="preloader-subtitle">Trường Đại Học Trà Vinh • TVU</div>
+            <div class="preloader-subtitle">Đại Học Trà Vinh • TVU</div>
             <h2 class="preloader-title">CHÀO MỪNG ĐẾN VỚI DA26KDA</h2>
             <p class="preloader-desc">Ngành Công nghệ Kỹ thuật Điện - Điện tử A • Khóa 2026</p>
             <div class="preloader-progress-track">
@@ -2499,6 +3015,7 @@
 
             <ul class="nav-links" id="navLinksList">
                 <li><a href="#heroSection" class="nav-link active js-scroll-link">Tổng quan</a></li>
+                <li><a href="#noticeSection" class="nav-link nav-link-notice js-scroll-link">Thông báo <span class="nav-notice-dot" aria-hidden="true"></span></a></li>
                 <li><a href="#leadershipSection" class="nav-link js-scroll-link">BCS &amp; BCH</a></li>
                 <li><a href="#directorySection" class="nav-link js-scroll-link">38 Thành viên</a></li>
                 <li><a href="#curriculumSection" class="nav-link js-scroll-link">Chuyên ngành</a></li>
@@ -2521,7 +3038,7 @@
                         <span class="hero-pill-dot"></span>
                         Tập Thể Chính Quy Khóa 2026
                     </span>
-                    <span class="hero-university-tag">🎓 Trường Đại Học Trà Vinh</span>
+                    <span class="hero-university-tag">🎓 Đại Học Trà Vinh</span>
                 </div>
 
                 <h1 class="hero-title">
@@ -2541,6 +3058,9 @@
                     <a href="#directorySection" class="btn-primary-glow js-scroll-link">
                         <span>Danh sách 38 thành viên</span>
                         <span>→</span>
+                    </a>
+                    <a href="#noticeSection" class="btn-notice-glow js-scroll-link">
+                        <span>📢 Lịch thi GDQP&amp;AN</span>
                     </a>
                     <a href="#campusSection" class="btn-secondary-glass js-scroll-link">
                         <span>📍 Hiện đang học ở đâu?</span>
@@ -2607,7 +3127,7 @@
                         </div>
                         <div>
                             <div class="hud-logo-caption-title">BIỂU TRƯNG DA26KDA</div>
-                            <div class="hud-logo-caption-sub">Khoa Kỹ thuật và Công nghệ<br>Trường Đại Học Trà Vinh</div>
+                            <div class="hud-logo-caption-sub">Khoa Kỹ thuật và Công nghệ<br>Đại Học Trà Vinh</div>
                         </div>
                     </div>
 
@@ -2629,11 +3149,11 @@
                         </div>
                         <div class="hud-info-row">
                             <span class="hud-info-key">Đơn vị đào tạo</span>
-                            <span class="hud-info-val">Trường Đại Học Trà Vinh</span>
+                            <span class="hud-info-val">Đại Học Trà Vinh</span>
                         </div>
                         <div class="hud-info-row">
                             <span class="hud-info-key">Cơ sở học tập</span>
-                            <span class="hud-info-val">Khu I • TP. Trà Vinh</span>
+                            <span class="hud-info-val">Khu I • Phường Hòa Thuận, Vĩnh Long</span>
                         </div>
                     </div>
                 </div>
@@ -2643,20 +3163,222 @@
 
     <div class="marquee-strip">
         <div class="marquee-track">
-            <span class="marquee-item"><span class="marquee-badge">TVU</span> TRƯỜNG ĐẠI HỌC TRÀ VINH — KHOA KỸ THUẬT VÀ CÔNG NGHỆ</span>
+            <span class="marquee-item"><span class="marquee-badge">TVU</span> ĐẠI HỌC TRÀ VINH — KHOA KỸ THUẬT VÀ CÔNG NGHỆ</span>
             <span class="marquee-item"><span class="marquee-badge">DA26KDA</span> NGÀNH CÔNG NGHỆ KỸ THUẬT ĐIỆN - ĐIỆN TỬ A</span>
             <span class="marquee-item"><span class="marquee-badge">SLOGAN</span> ĐOÀN KẾT • SÁNG TẠO • KỶ LUẬT • BỨT PHÁ</span>
+            <span class="marquee-item"><span class="marquee-badge">THÔNG BÁO</span> LỊCH THI GDQP&amp;AN (17/11 – 22/11) • D71.109, D71.110, BÃI TẬP 05 &amp; 09</span>
             <span class="marquee-item"><span class="marquee-badge">SĨ SỐ</span> 38 THÀNH VIÊN ĐỒNG LÒNG VỮNG BƯỚC</span>
         </div>
         <div class="marquee-track" aria-hidden="true">
-            <span class="marquee-item"><span class="marquee-badge">TVU</span> TRƯỜNG ĐẠI HỌC TRÀ VINH — KHOA KỸ THUẬT VÀ CÔNG NGHỆ</span>
+            <span class="marquee-item"><span class="marquee-badge">TVU</span> ĐẠI HỌC TRÀ VINH — KHOA KỸ THUẬT VÀ CÔNG NGHỆ</span>
             <span class="marquee-item"><span class="marquee-badge">DA26KDA</span> NGÀNH CÔNG NGHỆ KỸ THUẬT ĐIỆN - ĐIỆN TỬ A</span>
             <span class="marquee-item"><span class="marquee-badge">SLOGAN</span> ĐOÀN KẾT • SÁNG TẠO • KỶ LUẬT • BỨT PHÁ</span>
+            <span class="marquee-item"><span class="marquee-badge">THÔNG BÁO</span> LỊCH THI GDQP&amp;AN (17/11 – 22/11) • D71.109, D71.110, BÃI TẬP 05 &amp; 09</span>
             <span class="marquee-item"><span class="marquee-badge">SĨ SỐ</span> 38 THÀNH VIÊN ĐỒNG LÒNG VỮNG BƯỚC</span>
         </div>
     </div>
 
     <main class="main-wrapper">
+        <section class="content-section" id="noticeSection">
+            <div class="section-header">
+                <div class="section-kicker">Bản Tin Học Tập &amp; Thi Cử</div>
+                <h2 class="section-heading">Thông Báo Lớp DA26KDA</h2>
+                <p class="section-subtext">Cập nhật lịch thi Giáo dục Quốc phòng và An ninh (phòng thi, bãi tập), quy định thu hồi quân trang và tra cứu nhanh danh sách phân phòng theo MSSV.</p>
+            </div>
+
+            <div class="notice-board-shell">
+                <div class="notice-top-bar">
+                    <div>
+                        <div class="notice-badge-tag">📢 THÔNG BÁO QUAN TRỌNG • GDQP&amp;AN</div>
+                        <h3 class="notice-main-title">THÔNG BÁO LỊCH THI GIÁO DỤC QUỐC PHÒNG VÀ AN NINH</h3>
+                        <p class="notice-lead-text">Các bạn sinh viên theo dõi lịch thi và danh sách phân phòng chi tiết dưới đây để tham gia dự thi đầy đủ, đúng giờ:</p>
+                    </div>
+
+                    <div class="notice-view-tabs" id="noticeViewTabs">
+                        <button type="button" class="notice-tab-btn active" data-notice-tab="all">Tất cả nội dung</button>
+                        <button type="button" class="notice-tab-btn" data-notice-tab="schedule">1 &amp; 2. Lịch thi &amp; Lưu ý</button>
+                        <button type="button" class="notice-tab-btn" data-notice-tab="roster">Tra cứu phòng thi (37 SV)</button>
+                    </div>
+                </div>
+
+                <div id="noticeScheduleBlock">
+                    <h4 class="notice-block-title">
+                        <span class="notice-block-num">1</span>
+                        <span>Thời gian, phòng thi và bãi tập</span>
+                    </h4>
+
+                    <div class="exam-modules-grid">
+                        <div class="exam-module-card is-confirmed">
+                            <div class="exam-module-head">
+                                <span class="exam-module-name">Thi Học phần 1</span>
+                                <span class="exam-time-pill">Thứ Ba, 17/11 • Tối 18h30</span>
+                            </div>
+                            <div class="exam-room-rules">
+                                <div class="exam-room-rule-row">
+                                    <span>3 số cuối MSSV từ <strong>001 đến 029</strong></span>
+                                    <span class="exam-room-code">Phòng D71.109</span>
+                                </div>
+                                <div class="exam-room-rule-row">
+                                    <span>3 số cuối MSSV từ <strong>030 đến 134</strong></span>
+                                    <span class="exam-room-code is-alt">Phòng D71.110</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exam-module-card is-confirmed">
+                            <div class="exam-module-head">
+                                <span class="exam-module-name">Thi Học phần 2</span>
+                                <span class="exam-time-pill">Thứ Ba, 17/11 • Tối 19h45</span>
+                            </div>
+                            <div class="exam-room-rules">
+                                <div class="exam-room-rule-row">
+                                    <span>3 số cuối MSSV từ <strong>001 đến 029</strong></span>
+                                    <span class="exam-room-code">Phòng D71.109</span>
+                                </div>
+                                <div class="exam-room-rule-row">
+                                    <span>3 số cuối MSSV từ <strong>030 đến 134</strong></span>
+                                    <span class="exam-room-code is-alt">Phòng D71.110</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exam-module-card is-confirmed">
+                            <div class="exam-module-head">
+                                <span class="exam-module-name">Thi Học phần 3 • Quân sự chung</span>
+                                <span class="exam-time-pill">Thứ Tư, 18/11 • Chiều 13h00</span>
+                            </div>
+                            <div class="exam-room-rules">
+                                <div class="exam-room-rule-row">
+                                    <span>Cả lớp <strong>DA26KDA</strong> (MMH: 190083 • GV: Trần Văn Cọp)</span>
+                                    <span class="exam-room-code">Bãi tập 05</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exam-module-card is-confirmed">
+                            <div class="exam-module-head">
+                                <span class="exam-module-name">Thi Học phần 4 • Kỹ thuật CĐBB&amp;CT</span>
+                                <span class="exam-time-pill">Chủ Nhật, 22/11 • Sáng 07h00</span>
+                            </div>
+                            <div class="exam-room-rules">
+                                <div class="exam-room-rule-row">
+                                    <span>Cả lớp <strong>DA26KDA</strong> (MMH: 190084 • GV: Trần Văn Cọp)</span>
+                                    <span class="exam-room-code is-alt">Bãi tập 09</span>
+                                </div>
+                                <div class="exam-room-rule-row">
+                                    <span>Đem quân trang theo, thi xong thay &amp; xếp gọn trả Trung tâm ngay trong buổi thi</span>
+                                    <span class="exam-room-code" style="background: rgba(250, 204, 21, 0.16); color: var(--neon-gold); border-color: rgba(250, 204, 21, 0.4);">Trả quân trang</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="notice-block-title">
+                        <span class="notice-block-num">2</span>
+                        <span>Lưu ý bắt buộc</span>
+                    </h4>
+
+                    <div class="mandatory-rules-grid">
+                        <div class="mandatory-rule-card">
+                            <div class="mandatory-rule-icon">⏰</div>
+                            <div class="mandatory-rule-text">Có mặt tại phòng thi / bãi tập trước giờ thi 15 phút.</div>
+                        </div>
+                        <div class="mandatory-rule-card">
+                            <div class="mandatory-rule-icon">🎖️</div>
+                            <div class="mandatory-rule-text">Mặc đúng trang phục quốc phòng.</div>
+                        </div>
+                        <div class="mandatory-rule-card">
+                            <div class="mandatory-rule-icon">🪪</div>
+                            <div class="mandatory-rule-text">Mang theo CCCD để đối chiếu khi vào thi.</div>
+                        </div>
+                        <div class="mandatory-rule-card" style="border-color: rgba(244, 63, 94, 0.5); background: linear-gradient(135deg, rgba(244, 63, 94, 0.14), rgba(250, 204, 21, 0.1));">
+                            <div class="mandatory-rule-icon">🎒</div>
+                            <div class="mandatory-rule-text">Thi xong Học phần 4 (22/11): Đem quân trang theo (kèm đồ thường để thay), thi xong thay ra, xếp gọn theo hướng dẫn và trả cho Trung tâm ngay trong buổi thi để Thầy chuyển đi giặt chuẩn bị các khóa kế tiếp.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exam-roster-divider" id="noticeRosterDivider"></div>
+
+                <div id="noticeRosterBlock">
+                    <div class="exam-roster-header">
+                        <h4 class="notice-block-title" style="margin-bottom: 0;">
+                            <span class="notice-block-num">📋</span>
+                            <span>Danh sách sinh viên theo thứ tự MSSV và phòng thi (Học phần 1 &amp; 2)</span>
+                        </h4>
+                    </div>
+
+                    <p class="exam-roster-note">
+                        Danh sách đã được sắp xếp theo MSSV tăng dần và chia theo từng phòng thi (đã loại bỏ dòng trùng lặp ở STT 38 của sinh viên <strong>Nguyễn Hoàng Dân – 112126018</strong>, tổng cộng còn <strong>37 sinh viên</strong>).
+                    </p>
+
+                    <div class="exam-lookup-toolbar">
+                        <div class="search-input-wrapper">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" class="search-input" id="examRosterSearchInput" placeholder="Nhập MSSV hoặc Họ tên để tra phòng thi (VD: 112126001, Tuấn An...)">
+                            <button type="button" class="search-clear-btn" id="examRosterSearchClear" aria-label="Xóa tra cứu">✕</button>
+                        </div>
+
+                        <div class="filter-pills-group" id="examRoomFilterGroup">
+                            <button type="button" class="filter-pill active" data-room="all">Tất cả (37 SV)</button>
+                            <button type="button" class="filter-pill" data-room="D71.109">Phòng D71.109 (23 SV)</button>
+                            <button type="button" class="filter-pill" data-room="D71.110">Phòng D71.110 (14 SV)</button>
+                        </div>
+                    </div>
+
+                    <div class="exam-quick-result" id="examQuickResult" role="status">
+                        <div class="exam-quick-result-main" id="examQuickResultText"></div>
+                        <span class="exam-quick-result-badge" id="examQuickResultBadge"></span>
+                    </div>
+
+                    <div class="exam-rooms-grid" id="examRoomsGrid">
+                        <div class="exam-room-panel is-room-1" id="examRoomPanel109">
+                            <div class="exam-room-panel-head">
+                                <div>
+                                    <div class="exam-room-panel-title">Phòng D71.109</div>
+                                    <div class="exam-room-panel-sub">3 số cuối MSSV từ 001 đến 029 • 23 sinh viên</div>
+                                </div>
+                                <span class="exam-room-code" id="countRoom109">23 SV</span>
+                            </div>
+                            <div class="exam-table-wrap">
+                                <table class="exam-roster-table">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>MSSV</th>
+                                            <th>Họ và tên</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyRoom109"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="exam-room-panel is-room-2" id="examRoomPanel110">
+                            <div class="exam-room-panel-head">
+                                <div>
+                                    <div class="exam-room-panel-title">Phòng D71.110</div>
+                                    <div class="exam-room-panel-sub">3 số cuối MSSV từ 030 đến 134 • 14 sinh viên</div>
+                                </div>
+                                <span class="exam-room-code is-alt" id="countRoom110">14 SV</span>
+                            </div>
+                            <div class="exam-table-wrap">
+                                <table class="exam-roster-table">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>MSSV</th>
+                                            <th>Họ và tên</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodyRoom110"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section class="content-section" id="leadershipSection">
             <div class="section-header">
                 <div class="section-kicker">Ban Điều Hành Tập Thể</div>
@@ -2843,21 +3565,21 @@
                 <div class="campus-main-card">
                     <div>
                         <div class="campus-tabs" id="campusTabs">
-                            <button type="button" class="campus-tab-btn active" data-tab="tvu-main">🏫 Trường Đại Học Trà Vinh</button>
+                            <button type="button" class="campus-tab-btn active" data-tab="tvu-main">🏫 Đại Học Trà Vinh</button>
                             <button type="button" class="campus-tab-btn" data-tab="faculty-info">⚙️ Khoa Kỹ Thuật &amp; Công Nghệ</button>
                             <button type="button" class="campus-tab-btn" data-tab="major-focus">🔌 Chuyên Ngành Điện - Điện Tử</button>
                         </div>
 
                         <div class="campus-tab-panel active" id="tab-tvu-main">
-                            <h3 class="campus-title">Trường Đại Học Trà Vinh (TVU)</h3>
+                            <h3 class="campus-title">Đại Học Trà Vinh (TVU)</h3>
                             <div class="campus-subtitle">Cơ sở Khu I • Trung tâm đào tạo &amp; nghiên cứu chính</div>
                             <p class="campus-text">
-                                Tập thể lớp DA26KDA hiện đang theo học hệ đại học chính quy tại Trường Đại học Trà Vinh — ngôi trường đại học công lập trọng điểm khu vực Đồng bằng sông Cửu Long với môi trường học tập xanh, hiện đại và năng động.
+                                Tập thể lớp DA26KDA hiện đang theo học hệ đại học chính quy tại Đại học Trà Vinh — ngôi trường đại học công lập trọng điểm khu vực Đồng bằng sông Cửu Long với môi trường học tập xanh, hiện đại và năng động.
                             </p>
                             <div class="campus-detail-list">
                                 <div class="campus-detail-item">
                                     <div class="campus-detail-label">Địa chỉ cơ sở chính</div>
-                                    <div class="campus-detail-value">Số 126 Nguyễn Thiện Thành, Khóm 4, Phường 5, TP. Trà Vinh</div>
+                                    <div class="campus-detail-value">126, Nguyễn Thiện Thành, Phường Hòa Thuận, Tỉnh Vĩnh Long</div>
                                 </div>
                                 <div class="campus-detail-item">
                                     <div class="campus-detail-label">Hệ &amp; Khóa đào tạo</div>
@@ -2876,7 +3598,7 @@
 
                         <div class="campus-tab-panel" id="tab-faculty-info">
                             <h3 class="campus-title">Khoa Kỹ Thuật và Công Nghệ</h3>
-                            <div class="campus-subtitle">Bộ môn Điện - Điện tử • Trường Đại Học Trà Vinh</div>
+                            <div class="campus-subtitle">Bộ môn Điện - Điện tử • Đại Học Trà Vinh</div>
                             <p class="campus-text">
                                 Sinh viên lớp DA26KDA được trang bị hệ thống phòng thí nghiệm mạch điện, vi điều khiển, PLC, tự động hóa công nghiệp và xưởng thực hành kỹ thuật đạt chuẩn kiểm định chất lượng giáo dục.
                             </p>
@@ -2934,9 +3656,9 @@
                         <div class="radar-pin">TVU</div>
                     </div>
                     <div class="radar-coords">09°55'24.5"N 106°20'47.2"E</div>
-                    <h3 class="radar-location-name">Trường Đại Học Trà Vinh</h3>
-                    <p class="radar-location-address">Số 126 Nguyễn Thiện Thành, Phường 5, Thành phố Trà Vinh, Tỉnh Trà Vinh</p>
-                    <a href="https://maps.google.com/?q=Truong+Dai+Hoc+Tra+Vinh" target="_blank" rel="noopener noreferrer" class="btn-primary-glow">
+                    <h3 class="radar-location-name">Đại Học Trà Vinh</h3>
+                    <p class="radar-location-address">126, Nguyễn Thiện Thành, Phường Hòa Thuận, Tỉnh Vĩnh Long</p>
+                    <a href="https://maps.google.com/?q=Dai+Hoc+Tra+Vinh" target="_blank" rel="noopener noreferrer" class="btn-primary-glow">
                         <span>Mở trên Google Maps</span>
                         <span>↗</span>
                     </a>
@@ -3016,7 +3738,7 @@
                         </div>
                     </div>
                     <p class="footer-about-text">
-                        Trang thông tin điện tử giới thiệu tập thể sinh viên lớp DA26KDA — Ngành Công nghệ Kỹ thuật Điện - Điện tử A, Trường Đại học Trà Vinh.
+                        Trang thông tin điện tử giới thiệu tập thể sinh viên lớp DA26KDA — Ngành Công nghệ Kỹ thuật Điện - Điện tử A, Đại học Trà Vinh.
                     </p>
                     <div class="footer-status-pill">
                         <span>●</span>
@@ -3028,6 +3750,7 @@
                     <h4 class="footer-col-title">Điều Hướng Nhanh</h4>
                     <ul class="footer-links-list">
                         <li><a href="#heroSection" class="footer-link js-scroll-link">Trang chủ &amp; Tổng quan</a></li>
+                        <li><a href="#noticeSection" class="footer-link js-scroll-link">Thông báo lịch thi GDQP&amp;AN</a></li>
                         <li><a href="#leadershipSection" class="footer-link js-scroll-link">Ban Cán Sự &amp; BCH Chi Đoàn</a></li>
                         <li><a href="#directorySection" class="footer-link js-scroll-link">Danh sách 38 thành viên</a></li>
                         <li><a href="#curriculumSection" class="footer-link js-scroll-link">Định hướng chuyên ngành</a></li>
@@ -3049,10 +3772,10 @@
                 <div>
                     <h4 class="footer-col-title">Nơi Đang Học Tập</h4>
                     <div class="footer-campus-box">
-                        <div class="footer-campus-name">Trường Đại Học Trà Vinh</div>
+                        <div class="footer-campus-name">Đại Học Trà Vinh</div>
                         <p class="footer-campus-addr">
                             Khoa Kỹ thuật và Công nghệ<br>
-                            Số 126 Nguyễn Thiện Thành, Phường 5, TP. Trà Vinh, Tỉnh Trà Vinh
+                            126, Nguyễn Thiện Thành, Phường Hòa Thuận, Tỉnh Vĩnh Long
                         </p>
                     </div>
                 </div>
@@ -3232,7 +3955,7 @@
                 avatar: "",
                 specialty: "Mạng truyền thông công nghiệp",
                 unit: "Tập thể DA26KDA",
-                quote: "Sống hết mình với tuổi trẻ K26 Trường Đại học Trà Vinh."
+                quote: "Sống hết mình với tuổi trẻ K26 Đại học Trà Vinh."
             },
             {
                 stt: 15,
@@ -3532,7 +4255,7 @@
 
             const bootSteps = [
                 { threshold: 16, text: 'Cấp nguồn hệ thống mạch điện tử DA26KDA...' },
-                { threshold: 34, text: 'Kết nối máy chủ Trường Đại Học Trà Vinh (TVU)...' },
+                { threshold: 34, text: 'Kết nối máy chủ Đại Học Trà Vinh (TVU)...' },
                 { threshold: 52, text: 'Xác thực Ban Cán Sự & BCH Chi Đoàn lớp...' },
                 { threshold: 72, text: 'Đồng bộ dữ liệu & ảnh đại diện 38 thành viên...' },
                 { threshold: 90, text: 'Khởi chạy mô phỏng dao động & hiệu ứng giao diện...' },
@@ -3947,7 +4670,7 @@
                     backToTopBtn.classList.remove('is-visible');
                 }
 
-                const sections = ['heroSection', 'leadershipSection', 'directorySection', 'curriculumSection', 'campusSection', 'milestonesSection'];
+                const sections = ['heroSection', 'noticeSection', 'leadershipSection', 'directorySection', 'curriculumSection', 'campusSection', 'milestonesSection'];
                 let activeSectionId = 'heroSection';
                 sections.forEach(secId => {
                     const secEl = document.getElementById(secId);
@@ -4072,10 +4795,195 @@
             animateCanvas();
         }
 
+
+        const EXAM_ROSTER_DATA = [
+            { stt: 1, mssv: "112126001", name: "Kim Tuấn An", room: "D71.109" },
+            { stt: 2, mssv: "112126002", name: "Nguyễn Hoài An", room: "D71.109" },
+            { stt: 3, mssv: "112126003", name: "Phan Hoài An", room: "D71.109" },
+            { stt: 4, mssv: "112126004", name: "Nguyễn Dương Hoàng Anh", room: "D71.109" },
+            { stt: 5, mssv: "112126005", name: "Đặng Cao Thái Anh", room: "D71.109" },
+            { stt: 6, mssv: "112126006", name: "Nguyễn Kha Anh", room: "D71.109" },
+            { stt: 7, mssv: "112126007", name: "Nguyễn Lê Duy Anh", room: "D71.109" },
+            { stt: 8, mssv: "112126008", name: "Trần Ngọc Anh", room: "D71.109" },
+            { stt: 9, mssv: "112126009", name: "Biện Bảo Biên", room: "D71.109" },
+            { stt: 10, mssv: "112126014", name: "Sơn Tha Huy Chạch", room: "D71.109" },
+            { stt: 11, mssv: "112126016", name: "Nguyễn Chí Cường", room: "D71.109" },
+            { stt: 12, mssv: "112126017", name: "Võ Cao Cường", room: "D71.109" },
+            { stt: 13, mssv: "112126018", name: "Nguyễn Hoàng Dân", room: "D71.109" },
+            { stt: 14, mssv: "112126019", name: "Cao Hoàng Đỉnh", room: "D71.109" },
+            { stt: 15, mssv: "112126020", name: "Lê Khánh Duy", room: "D71.109" },
+            { stt: 16, mssv: "112126021", name: "Nguyễn Khánh Duy", room: "D71.109" },
+            { stt: 17, mssv: "112126023", name: "Sơn Minh Duy", room: "D71.109" },
+            { stt: 18, mssv: "112126024", name: "Trần Nhật Duy", room: "D71.109" },
+            { stt: 19, mssv: "112126025", name: "Nguyễn Hữu Đan", room: "D71.109" },
+            { stt: 25, mssv: "112126026", name: "Nguyễn Tú Điền", room: "D71.109" },
+            { stt: 26, mssv: "112126027", name: "Lâm Quốc Đô", room: "D71.109" },
+            { stt: 21, mssv: "112126028", name: "Đỗ Thành Đạt", room: "D71.109" },
+            { stt: 20, mssv: "112126029", name: "Đặng Hoàng Đạt", room: "D71.109" },
+            { stt: 22, mssv: "112126030", name: "Phan Tuấn Đạt", room: "D71.110" },
+            { stt: 23, mssv: "112126031", name: "Trần Hoàng Đạt", room: "D71.110" },
+            { stt: 30, mssv: "112126032", name: "Nguyễn Thế Hiển", room: "D71.110" },
+            { stt: 32, mssv: "112126033", name: "Thạch Nguyễn Hoàng", room: "D71.110" },
+            { stt: 28, mssv: "112126034", name: "Huỳnh Phước Hậu", room: "D71.110" },
+            { stt: 33, mssv: "112126036", name: "Nguyễn Quốc Huy", room: "D71.110" },
+            { stt: 34, mssv: "112126039", name: "Cao Lê Minh Khang", room: "D71.110" },
+            { stt: 35, mssv: "112126040", name: "Lâm Chấn Khang", room: "D71.110" },
+            { stt: 36, mssv: "112126112", name: "Nguyễn Chí Vĩ", room: "D71.110" },
+            { stt: 37, mssv: "112126118", name: "Sơn Kim Hoàng Vũ", room: "D71.110" },
+            { stt: 24, mssv: "112126130", name: "Trương Tiến Đạt", room: "D71.110" },
+            { stt: 27, mssv: "112126131", name: "Dương Chí Hào", room: "D71.110" },
+            { stt: 29, mssv: "112126132", name: "Ngô Công Hậu", room: "D71.110" },
+            { stt: 31, mssv: "112126134", name: "Đặng Trần Anh Hoàng", room: "D71.110" }
+        ];
+
+        function initNoticeBoard() {
+            const viewTabs = document.querySelectorAll('#noticeViewTabs .notice-tab-btn');
+            const scheduleBlock = document.getElementById('noticeScheduleBlock');
+            const rosterDivider = document.getElementById('noticeRosterDivider');
+            const rosterBlock = document.getElementById('noticeRosterBlock');
+
+            const searchInput = document.getElementById('examRosterSearchInput');
+            const clearBtn = document.getElementById('examRosterSearchClear');
+            const roomPills = document.querySelectorAll('#examRoomFilterGroup .filter-pill');
+            const roomsGrid = document.getElementById('examRoomsGrid');
+            const panel109 = document.getElementById('examRoomPanel109');
+            const panel110 = document.getElementById('examRoomPanel110');
+            const tbody109 = document.getElementById('tbodyRoom109');
+            const tbody110 = document.getElementById('tbodyRoom110');
+            const count109 = document.getElementById('countRoom109');
+            const count110 = document.getElementById('countRoom110');
+            const quickResult = document.getElementById('examQuickResult');
+            const quickResultText = document.getElementById('examQuickResultText');
+            const quickResultBadge = document.getElementById('examQuickResultBadge');
+
+            let activeRoomFilter = 'all';
+            let rosterQuery = '';
+
+            viewTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    viewTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    const mode = tab.getAttribute('data-notice-tab');
+
+                    if (mode === 'all') {
+                        scheduleBlock.classList.remove('notice-section-hidden');
+                        rosterDivider.classList.remove('notice-section-hidden');
+                        rosterBlock.classList.remove('notice-section-hidden');
+                    } else if (mode === 'schedule') {
+                        scheduleBlock.classList.remove('notice-section-hidden');
+                        rosterDivider.classList.add('notice-section-hidden');
+                        rosterBlock.classList.add('notice-section-hidden');
+                    } else if (mode === 'roster') {
+                        scheduleBlock.classList.add('notice-section-hidden');
+                        rosterDivider.classList.add('notice-section-hidden');
+                        rosterBlock.classList.remove('notice-section-hidden');
+                    }
+                });
+            });
+
+            function renderExamTables() {
+                const normQuery = normalizeVietnamese(rosterQuery);
+
+                const matches = EXAM_ROSTER_DATA.filter(item => {
+                    if (!normQuery) return true;
+                    const normName = normalizeVietnamese(item.name);
+                    const sttStr = String(item.stt);
+                    return (
+                        normName.includes(normQuery) ||
+                        item.mssv.includes(normQuery) ||
+                        sttStr === normQuery
+                    );
+                });
+
+                const list109 = matches.filter(item => item.room === 'D71.109');
+                const list110 = matches.filter(item => item.room === 'D71.110');
+
+                count109.textContent = `${list109.length} SV`;
+                count110.textContent = `${list110.length} SV`;
+
+                tbody109.innerHTML = list109.length
+                    ? list109.map(item => `
+                        <tr class="${normQuery ? 'is-match-highlight' : ''}">
+                            <td class="exam-stt-cell">${String(item.stt).padStart(2, '0')}</td>
+                            <td class="exam-mssv-cell">${item.mssv}</td>
+                            <td class="exam-name-cell">${item.name}</td>
+                        </tr>
+                    `).join('')
+                    : `<tr><td colspan="3" style="text-align:center; color: var(--text-muted); padding: 1.25rem;">Không có sinh viên phù hợp ở phòng D71.109</td></tr>`;
+
+                tbody110.innerHTML = list110.length
+                    ? list110.map(item => `
+                        <tr class="${normQuery ? 'is-match-highlight' : ''}">
+                            <td class="exam-stt-cell">${String(item.stt).padStart(2, '0')}</td>
+                            <td class="exam-mssv-cell">${item.mssv}</td>
+                            <td class="exam-name-cell">${item.name}</td>
+                        </tr>
+                    `).join('')
+                    : `<tr><td colspan="3" style="text-align:center; color: var(--text-muted); padding: 1.25rem;">Không có sinh viên phù hợp ở phòng D71.110</td></tr>`;
+
+                if (activeRoomFilter === 'D71.109') {
+                    panel109.classList.remove('notice-section-hidden');
+                    panel110.classList.add('notice-section-hidden');
+                    roomsGrid.classList.add('is-single-room');
+                } else if (activeRoomFilter === 'D71.110') {
+                    panel109.classList.add('notice-section-hidden');
+                    panel110.classList.remove('notice-section-hidden');
+                    roomsGrid.classList.add('is-single-room');
+                } else {
+                    panel109.classList.remove('notice-section-hidden');
+                    panel110.classList.remove('notice-section-hidden');
+                    roomsGrid.classList.remove('is-single-room');
+                }
+
+                if (normQuery && matches.length === 1) {
+                    const found = matches[0];
+                    quickResultText.innerHTML = `✅ Tìm thấy: <strong>${found.name}</strong> (MSSV: <code>${found.mssv}</code> • STT #${String(found.stt).padStart(2, '0')}) — HP1 &amp; HP2 (17/11): Phòng <strong>${found.room}</strong> • HP3 (18/11): <strong>Bãi tập 05</strong> • HP4 (22/11): <strong>Bãi tập 09</strong>`;
+                    quickResultBadge.textContent = `PHÒNG ${found.room}`;
+                    quickResult.classList.add('is-visible');
+                } else if (normQuery && matches.length > 1) {
+                    quickResultText.innerHTML = `🔎 Tìm thấy <strong>${matches.length} sinh viên</strong> khớp với từ khóa "<strong>${rosterQuery.trim()}</strong>". Xem chi tiết ở bảng bên dưới:`;
+                    quickResultBadge.textContent = `${matches.length} KẾT QUẢ`;
+                    quickResult.classList.add('is-visible');
+                } else if (normQuery && matches.length === 0) {
+                    quickResultText.innerHTML = `⚠️ Không tìm thấy sinh viên nào khớp với "<strong>${rosterQuery.trim()}</strong>". Vui lòng kiểm tra lại MSSV hoặc họ tên.`;
+                    quickResultBadge.textContent = `0 KẾT QUẢ`;
+                    quickResult.classList.add('is-visible');
+                } else {
+                    quickResult.classList.remove('is-visible');
+                }
+            }
+
+            searchInput.addEventListener('input', event => {
+                rosterQuery = event.target.value;
+                clearBtn.classList.toggle('is-visible', rosterQuery.length > 0);
+                renderExamTables();
+            });
+
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                rosterQuery = '';
+                clearBtn.classList.remove('is-visible');
+                searchInput.focus();
+                renderExamTables();
+            });
+
+            roomPills.forEach(pill => {
+                pill.addEventListener('click', () => {
+                    roomPills.forEach(p => p.classList.remove('active'));
+                    pill.classList.add('active');
+                    activeRoomFilter = pill.getAttribute('data-room');
+                    renderExamTables();
+                });
+            });
+
+            renderExamTables();
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             initPreloaderSequence();
             initNeuralCircuitCanvas();
             initNavigationAndTheme();
+            initNoticeBoard();
             initDirectoryControls();
             initCampusTabs();
             initModalEvents();
