@@ -3263,6 +3263,27 @@
         }
 
 
+        
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 9999;
+        }
+        .nav-actions {
+            position: relative;
+            z-index: 10002;
+        }
+        .mobile-menu-btn, .theme-toggle-btn {
+            position: relative;
+            z-index: 10003;
+            pointer-events: auto !important;
+            cursor: pointer;
+        }
+        .nav-links {
+            z-index: 10001;
+        }
+
+
         /* === COMPACT NOTICE BOARD & LIVE COUNTDOWN (v4) === */
         .notice-header-clock {
             display: inline-flex;
@@ -3615,6 +3636,411 @@
             }
         }
 
+    
+        /* === IMPORTANT NOTICE CARD & VIETQR PANEL (v6) === */
+        .important-notice-card {
+            background: linear-gradient(145deg, rgba(244, 63, 94, 0.11), rgba(250, 204, 21, 0.09), var(--bg-glass-strong));
+            border: 1.5px solid rgba(250, 204, 21, 0.58);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 1.65rem;
+            margin-bottom: 1.45rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 32px rgba(244, 63, 94, 0.12), var(--shadow-card);
+        }
+
+        .important-notice-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #f43f5e, #f59e0b, #facc15, #38bdf8);
+        }
+
+        .imp-notice-top {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.65rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .imp-badges-left {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .imp-tag-important {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.32rem 0.85rem;
+            border-radius: 99px;
+            background: linear-gradient(135deg, #e11d48 0%, #f59e0b 100%);
+            color: #ffffff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.7px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35);
+        }
+
+        .imp-pulse-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #ffffff;
+            animation: impPulse 1.6s infinite ease-in-out;
+        }
+
+        @keyframes impPulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.45); opacity: 0.55; }
+        }
+
+        .imp-tag-branch {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.3rem 0.78rem;
+            border-radius: 99px;
+            background: rgba(250, 204, 21, 0.15);
+            border: 1px solid rgba(250, 204, 21, 0.42);
+            color: var(--neon-gold);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.74rem;
+            font-weight: 700;
+        }
+
+        .imp-deadline-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.32rem 0.85rem;
+            border-radius: 99px;
+            background: rgba(16, 185, 129, 0.14);
+            border: 1px solid rgba(16, 185, 129, 0.38);
+            color: var(--neon-emerald);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.76rem;
+            font-weight: 800;
+        }
+
+        .imp-notice-title {
+            font-size: 1.24rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.38;
+            margin-bottom: 0.45rem;
+        }
+
+        .imp-notice-intro {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 1.15rem;
+        }
+
+        .imp-notice-grid {
+            display: grid;
+            grid-template-columns: 1.18fr 0.92fr;
+            gap: 1.25rem;
+            align-items: stretch;
+        }
+
+        .imp-details-panel {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            padding: 1.15rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 0.95rem;
+        }
+
+        .imp-fee-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+            margin-top: 0.45rem;
+        }
+
+        .imp-fee-table td {
+            padding: 0.5rem 0.65rem;
+            border-bottom: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+        }
+
+        .imp-fee-table td.fee-amt {
+            text-align: right;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+
+        .imp-fee-table tr.is-total td {
+            border-bottom: none;
+            background: rgba(250, 204, 21, 0.14);
+            color: var(--neon-gold);
+            font-weight: 800;
+            font-size: 0.95rem;
+            padding-top: 0.62rem;
+            padding-bottom: 0.62rem;
+        }
+
+        .imp-fee-table tr.is-total td:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+
+        .imp-fee-table tr.is-total td:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+
+        .imp-info-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            font-size: 0.87rem;
+            color: var(--text-secondary);
+        }
+
+        .imp-info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.55rem;
+            line-height: 1.48;
+        }
+
+        .imp-closing-note {
+            padding: 0.72rem 0.95rem;
+            border-radius: 10px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.28);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.45;
+        }
+
+        .imp-qr-panel {
+            background: var(--bg-glass);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            border-radius: var(--radius-md);
+            padding: 1.15rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .imp-qr-panel-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .imp-qr-panel-title {
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--neon-cyan);
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .imp-qr-student-picker {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.45rem;
+        }
+
+        .imp-qr-select,
+        .imp-qr-input {
+            width: 100%;
+            padding: 0.52rem 0.78rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-glass);
+            background: var(--bg-glass-strong);
+            color: var(--text-primary);
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-size: 0.82rem;
+            outline: none;
+            transition: border-color var(--transition-fast);
+        }
+
+        .imp-qr-select:focus,
+        .imp-qr-input:focus {
+            border-color: var(--neon-cyan);
+        }
+
+        .imp-qr-visual-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 0.85rem;
+            border: 2px solid rgba(56, 189, 248, 0.45);
+            box-shadow: 0 8px 24px rgba(2, 6, 23, 0.25);
+            position: relative;
+        }
+
+        .imp-qr-img {
+            width: 210px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .imp-qr-canvas {
+            display: none;
+            width: 196px;
+            height: 196px;
+            image-rendering: pixelated;
+        }
+
+        .imp-qr-caption {
+            margin-top: 0.45rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #0f172a;
+            text-align: center;
+        }
+
+        .imp-bank-box {
+            display: flex;
+            flex-direction: column;
+            gap: 0.42rem;
+            font-size: 0.82rem;
+            background: var(--bg-glass-strong);
+            border: 1px solid var(--border-subtle);
+            border-radius: 10px;
+            padding: 0.75rem 0.88rem;
+        }
+
+        .imp-bank-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .imp-bank-lbl {
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .imp-bank-val {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-align: right;
+            word-break: break-word;
+        }
+
+        .imp-copy-btn {
+            padding: 0.22rem 0.58rem;
+            border-radius: 7px;
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            background: rgba(56, 189, 248, 0.14);
+            color: var(--neon-cyan);
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all var(--transition-fast);
+        }
+
+        .imp-copy-btn:hover {
+            background: var(--neon-cyan);
+            color: #060b19;
+        }
+
+        .imp-copy-btn.is-copied {
+            background: var(--neon-emerald);
+            border-color: var(--neon-emerald);
+            color: #060b19;
+        }
+
+        .imp-qr-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .imp-action-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 0.55rem 0.85rem;
+            border-radius: 10px;
+            border: 1px solid rgba(56, 189, 248, 0.45);
+            background: rgba(56, 189, 248, 0.14);
+            color: var(--neon-cyan);
+            font-family: 'Be Vietnam Pro', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: all var(--transition-fast);
+        }
+
+        .imp-action-btn:hover {
+            background: var(--neon-cyan);
+            color: #060b19;
+        }
+
+        .imp-action-btn.is-primary {
+            background: var(--gradient-gold);
+            border-color: transparent;
+            color: #0f172a;
+            font-weight: 800;
+        }
+
+        .imp-action-btn.is-primary:hover {
+            filter: brightness(1.06);
+            transform: translateY(-1px);
+        }
+
+        .compact-schedule-row.is-important {
+            border-color: rgba(244, 63, 94, 0.52);
+            background: linear-gradient(90deg, rgba(244, 63, 94, 0.12), rgba(250, 204, 21, 0.08), var(--bg-glass-strong));
+        }
+
+        .compact-important-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.14rem 0.52rem;
+            border-radius: 99px;
+            background: linear-gradient(135deg, #e11d48, #f59e0b);
+            color: #ffffff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            vertical-align: middle;
+            margin-right: 0.4rem;
+        }
+
+        @media (max-width: 880px) {
+            .imp-notice-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
     </style>
 </head>
 <body class="is-loading">
@@ -3910,6 +4336,121 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- THÔNG BÁO QUAN TRỌNG ĐƯỢC GHIM: THU ĐOÀN PHÍ & KINH PHÍ CTTN 2026-2027 (TỰ ẨN SAU 05/01/2027) -->
+                <article class="important-notice-card js-expirable-notice" id="pinnedYouthUnionNotice" data-expires="2027-01-05">
+                    <div class="imp-notice-top">
+                        <div class="imp-badges-left">
+                            <span class="imp-tag-important"><span class="imp-pulse-dot"></span>📌 Quan Trọng</span>
+                            <span class="imp-tag-branch">🔊 Chi Đoàn DA26KDA • Năm học 2026–2027</span>
+                        </div>
+                        <span class="imp-deadline-pill" id="youthUnionDeadlinePill">⏳ Hạn chót Chi đoàn: 05/01/2027</span>
+                    </div>
+
+                    <h4 class="imp-notice-title">THÔNG BÁO THU ĐOÀN PHÍ VÀ KINH PHÍ CÔNG TRÌNH THANH NIÊN (CTTN) NĂM HỌC 26-27</h4>
+                    <p class="imp-notice-intro">
+                        Kính gửi các bạn đoàn viên trong chi đoàn, thực hiện theo yêu cầu của <strong>Đoàn Trường</strong>, Ban Chấp hành Chi đoàn tiến hành thu Đoàn phí và kinh phí thực hiện Công trình thanh niên (CTTN) năm học <strong>2026–2027</strong> cụ thể như sau:
+                    </p>
+
+                    <div class="imp-notice-grid">
+                        <!-- CỘT TRÁI: CHI TIẾT KHOẢN THU & THỜI HẠN -->
+                        <div class="imp-details-panel">
+                            <div>
+                                <ul class="imp-info-list">
+                                    <li><span>👥</span><span><strong>Đối tượng:</strong> Tất cả Đoàn viên trong chi đoàn DA26KDA.</span></li>
+                                    <li><span>💰</span><span><strong>Mức đóng góp cụ thể:</strong></span></li>
+                                </ul>
+
+                                <table class="imp-fee-table" aria-label="Bảng chi tiết mức đóng góp Đoàn phí và CTTN">
+                                    <tbody>
+                                        <tr>
+                                            <td>• Đoàn phí (2.000đ/tháng × 12 tháng)</td>
+                                            <td class="fee-amt">24.000đ</td>
+                                        </tr>
+                                        <tr>
+                                            <td>• Kinh phí CTTN cấp Đại học</td>
+                                            <td class="fee-amt">13.000đ</td>
+                                        </tr>
+                                        <tr>
+                                            <td>• Kinh phí CTTN cấp Trường</td>
+                                            <td class="fee-amt">13.000đ</td>
+                                        </tr>
+                                        <tr class="is-total">
+                                            <td>👉 Tổng cộng / Đoàn viên</td>
+                                            <td class="fee-amt">50.000đ</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <ul class="imp-info-list" style="margin-top: 0.85rem;">
+                                    <li><span>💳</span><span><strong>Hình thức nộp:</strong> Nộp trực tiếp hoặc chuyển khoản về cho Bí thư (<strong>Kim Tuấn An</strong>).</span></li>
+                                    <li><span>⏰</span><span><strong>Hạn chót thu trong chi đoàn:</strong> Đến ngày <strong style="color: var(--neon-gold);">05/01/2027</strong> để kịp lập danh sách nộp về Đoàn trường (trước hạn chót <strong>15/01/2027</strong> của Đoàn trường).</span></li>
+                                </ul>
+                            </div>
+
+                            <div class="imp-closing-note">
+                                Đề nghị các bạn đoàn viên nghiêm túc thực hiện và đóng đúng hạn để Chi đoàn hoàn thành chỉ tiêu đúng tiến độ nhé! ❤️
+                            </div>
+                        </div>
+
+                        <!-- CỘT PHẢI: TẠO MÃ QR CHUYỂN KHOẢN & THÔNG TIN TÀI KHOẢN -->
+                        <div class="imp-qr-panel">
+                            <div class="imp-qr-panel-head">
+                                <div class="imp-qr-panel-title">📲 Quét Mã VietQR Chuyển Khoản</div>
+                                <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 800; color: var(--neon-gold);">50.000đ</span>
+                            </div>
+
+                            <div class="imp-qr-student-picker">
+                                <select class="imp-qr-select" id="qrMemberSelect" aria-label="Chọn đoàn viên để tạo nội dung QR">
+                                    <option value="">-- Chọn tên bạn (hoặc nhập bên dưới) để tạo QR cá nhân --</option>
+                                </select>
+                                <input type="text" class="imp-qr-input" id="qrCustomNoteInput" placeholder="Hoặc nhập: HoTen MSSV (VD: NguyenVanA 112126001)">
+                            </div>
+
+                            <div class="imp-qr-visual-wrap" id="vietQrVisualBox">
+                                <img
+                                    id="vietQrImage"
+                                    class="imp-qr-img"
+                                    src="https://img.vietqr.io/image/TCB-10018222222-compact2.png?amount=50000&addInfo=NguyenVanA%20112126001%20-%20DoanphiCTTN&accountName=KIM%20TUAN%20AN"
+                                    alt="Mã QR chuyển khoản Techcombank - Kim Tuan An - 50.000đ"
+                                    crossorigin="anonymous"
+                                />
+                                <canvas id="vietQrFallbackCanvas" class="imp-qr-canvas" width="220" height="220"></canvas>
+                                <div class="imp-qr-caption" id="vietQrCaptionText">Techcombank • 10018222222 • 50.000đ</div>
+                            </div>
+
+                            <div class="imp-bank-box">
+                                <div class="imp-bank-row">
+                                    <span class="imp-bank-lbl">Ngân hàng:</span>
+                                    <span class="imp-bank-val">Techcombank</span>
+                                </div>
+                                <div class="imp-bank-row">
+                                    <span class="imp-bank-lbl">Số tài khoản:</span>
+                                    <div style="display: flex; align-items: center; gap: 0.45rem;">
+                                        <span class="imp-bank-val" style="color: var(--neon-cyan);">10018222222</span>
+                                        <button type="button" class="imp-copy-btn" id="copyStkBtn" data-copy="10018222222">Sao chép</button>
+                                    </div>
+                                </div>
+                                <div class="imp-bank-row">
+                                    <span class="imp-bank-lbl">Chủ tài khoản:</span>
+                                    <span class="imp-bank-val">Kim Tuan An</span>
+                                </div>
+                                <div class="imp-bank-row" style="align-items: flex-start;">
+                                    <span class="imp-bank-lbl" style="white-space: nowrap;">Nội dung CK:</span>
+                                    <div style="display: flex; align-items: center; gap: 0.45rem; justify-content: flex-end; flex-wrap: wrap;">
+                                        <span class="imp-bank-val" id="qrTransferNoteDisplay" style="color: var(--neon-gold);">NguyenVanA 112126001 - DoanphiCTTN</span>
+                                        <button type="button" class="imp-copy-btn" id="copyNoteBtn">Sao chép</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="imp-qr-actions">
+                                <button type="button" class="imp-action-btn is-primary" id="downloadVietQrBtn">⬇️ Tải ảnh QR</button>
+                                <button type="button" class="imp-action-btn" id="copyFullBankInfoBtn">📋 Copy toàn bộ TT</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
 
                 <!-- DANH SÁCH GỌN CÁC LỊCH QUAN TRỌNG GẦN NHẤT (TỰ ĐỘNG RENDER & LỌC QUÁ HẠN) -->
                 <div class="compact-schedule-list" id="primaryScheduleList"></div>
@@ -5619,6 +6160,17 @@
                 startAt: '2026-12-04T07:00:00',
                 expiresDate: '2026-12-04',
                 category: 'Thi kết thúc học phần'
+            },
+            {
+                id: 'doan-phi-cttn-26-27',
+                dateLabel: '05/01/2027',
+                fullDateLabel: 'Thứ Ba, 05/01/2027 • Hạn chót thu trong Chi đoàn',
+                title: 'Hạn Chót Thu Đoàn Phí & Kinh Phí CTTN Năm Học 2026–2027',
+                detail: '50.000đ/Đoàn viên • Nộp trực tiếp hoặc CK Techcombank 10018222222 (Kim Tuan An) trước hạn Đoàn trường 15/01/2027',
+                startAt: '2027-01-05T23:59:00',
+                expiresDate: '2027-01-05',
+                category: 'Quan trọng • Chi đoàn',
+                isImportant: true
             }
         ];
 
@@ -5721,12 +6273,13 @@
                 const targetMs = new Date(item.startAt).getTime();
                 const badge = formatRelativeCountdownBadge(targetMs, nowMs);
                 const isFirst = idx === 0;
+                const impTag = item.isImportant ? `<span class="compact-important-pill">📌 Quan trọng</span>` : '';
                 return `
-                    <div class="compact-schedule-row ${isFirst ? 'is-next' : ''}">
+                    <div class="compact-schedule-row ${isFirst ? 'is-next' : ''} ${item.isImportant ? 'is-important' : ''}">
                         <div class="compact-row-left">
                             <span class="compact-date-pill">${item.dateLabel}</span>
                             <div class="compact-row-info">
-                                <div class="compact-row-title">${item.title}</div>
+                                <div class="compact-row-title">${impTag}${item.title}</div>
                                 <div class="compact-row-sub">${item.detail}</div>
                             </div>
                         </div>
@@ -5978,11 +6531,462 @@
             renderExamTables();
         }
 
+        
+        /* === VIETQR EMVCO PAYLOAD BUILDER & PURE-JS QR CANVAS FALLBACK (v6) === */
+        function computeCrc16CcittFalse(str) {
+            let crc = 0xFFFF;
+            for (let i = 0; i < str.length; i++) {
+                crc ^= (str.charCodeAt(i) & 0xFF) << 8;
+                for (let b = 0; b < 8; b++) {
+                    if (crc & 0x8000) {
+                        crc = ((crc << 1) ^ 0x1021) & 0xFFFF;
+                    } else {
+                        crc = (crc << 1) & 0xFFFF;
+                    }
+                }
+            }
+            return crc.toString(16).toUpperCase().padStart(4, '0');
+        }
+
+        function formatEmvTlv(tag, val) {
+            const len = String(val.length).padStart(2, '0');
+            return `${tag}${len}${val}`;
+        }
+
+        function toAsciiTransferText(raw) {
+            return String(raw || '')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/đ/g, 'd')
+                .replace(/Đ/g, 'D')
+                .replace(/[^a-zA-Z0-9\s\-_]/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        function buildTechcombankVietQrPayload(addInfo) {
+            const cleanInfo = toAsciiTransferText(addInfo).slice(0, 50) || 'NguyenVanA 112126001 - DoanphiCTTN';
+            const bankInfo = formatEmvTlv('00', '970407') + formatEmvTlv('01', '10018222222');
+            const merchantAccount = formatEmvTlv('00', 'A000000727') + formatEmvTlv('01', bankInfo) + formatEmvTlv('02', 'QRIBFTTA');
+            const additionalData = formatEmvTlv('08', cleanInfo);
+            const rawPayload =
+                formatEmvTlv('00', '01') +
+                formatEmvTlv('01', '12') +
+                formatEmvTlv('38', merchantAccount) +
+                formatEmvTlv('53', '704') +
+                formatEmvTlv('54', '50000') +
+                formatEmvTlv('58', 'VN') +
+                formatEmvTlv('62', additionalData) +
+                '6304';
+            return rawPayload + computeCrc16CcittFalse(rawPayload);
+        }
+
+        // Compact ISO/IEC 18004 QR Code Matrix Generator (Byte Mode, Versions 1..10, EC-L) for Offline Fallback
+        const MiniQrGenerator = (() => {
+            const EXP = new Uint8Array(512);
+            const LOG = new Uint8Array(256);
+            let x = 1;
+            for (let i = 0; i < 255; i++) {
+                EXP[i] = x;
+                LOG[x] = i;
+                x <<= 1;
+                if (x & 0x100) x ^= 0x11d;
+            }
+            for (let i = 255; i < 512; i++) EXP[i] = EXP[i - 255];
+
+            function gfMul(a, b) {
+                if (a === 0 || b === 0) return 0;
+                return EXP[LOG[a] + LOG[b]];
+            }
+
+            function rsGeneratorPoly(degree) {
+                let poly = [1];
+                for (let i = 0; i < degree; i++) {
+                    const next = new Array(poly.length + 1).fill(0);
+                    const factor = EXP[i];
+                    for (let j = 0; j < poly.length; j++) {
+                        next[j] ^= poly[j];
+                        next[j + 1] ^= gfMul(poly[j], factor);
+                    }
+                    poly = next;
+                }
+                return poly;
+            }
+
+            function rsComputeEc(data, ecLen) {
+                const gen = rsGeneratorPoly(ecLen);
+                const buf = data.concat(new Array(ecLen).fill(0));
+                for (let i = 0; i < data.length; i++) {
+                    const coef = buf[i];
+                    if (coef !== 0) {
+                        for (let j = 0; j < gen.length; j++) {
+                            buf[i + j] ^= gfMul(gen[j], coef);
+                        }
+                    }
+                }
+                return buf.slice(data.length);
+            }
+
+            // Versions 1..10 EC-L: [totalDataCodewords, [[count, dataPerBlock, ecPerBlock], ...], alignCenters]
+            const VERSION_SPECS = {
+                1:  [19,  [[1, 19, 7]], []],
+                2:  [34,  [[1, 34, 10]], [6, 18]],
+                3:  [55,  [[1, 55, 15]], [6, 22]],
+                4:  [80,  [[1, 80, 20]], [6, 26]],
+                5:  [108, [[1, 108, 26]], [6, 30]],
+                6:  [136, [[2, 68, 18]], [6, 34]],
+                7:  [156, [[2, 78, 20]], [6, 22, 38]],
+                8:  [194, [[2, 97, 24]], [6, 24, 42]],
+                9:  [232, [[2, 116, 30]], [6, 26, 46]],
+                10: [274, [[2, 68, 18], [2, 69, 18]], [6, 28, 50]]
+            };
+
+            // Precomputed 15-bit format info for EC-L (01) and masks 0..7
+            const FORMAT_INFO_L = [0x77C4, 0x72F3, 0x7DAA, 0x789D, 0x662F, 0x6318, 0x6C41, 0x6976];
+            // Precomputed 18-bit version info for versions 7..10
+            const VERSION_INFO = { 7: 0x07C94, 8: 0x085BC, 9: 0x09A99, 10: 0x0A4D3 };
+
+            function encode(text) {
+                const bytes = [];
+                for (let i = 0; i < text.length; i++) bytes.push(text.charCodeAt(i) & 0xFF);
+                let ver = 1;
+                for (; ver <= 10; ver++) {
+                    const cap = VERSION_SPECS[ver][0] - (ver <= 9 ? 2 : 3);
+                    if (bytes.length <= cap) break;
+                }
+                if (ver > 10) ver = 10;
+                const [totalData, blockGroups, alignCoords] = VERSION_SPECS[ver];
+
+                // Build bit stream (Byte mode = 0100)
+                const bits = [];
+                const pushBits = (val, len) => {
+                    for (let i = len - 1; i >= 0; i--) bits.push((val >>> i) & 1);
+                };
+                pushBits(0b0100, 4);
+                pushBits(bytes.length, ver <= 9 ? 8 : 16);
+                for (const b of bytes) pushBits(b, 8);
+                const maxBits = totalData * 8;
+                pushBits(0, Math.min(4, maxBits - bits.length));
+                while (bits.length % 8 !== 0) bits.push(0);
+                const pads = [0xEC, 0x11];
+                let padIdx = 0;
+                while (bits.length < maxBits) {
+                    pushBits(pads[padIdx % 2], 8);
+                    padIdx++;
+                }
+
+                const dataCodewords = [];
+                for (let i = 0; i < bits.length; i += 8) {
+                    let byteVal = 0;
+                    for (let b = 0; b < 8; b++) byteVal = (byteVal << 1) | bits[i + b];
+                    dataCodewords.push(byteVal);
+                }
+
+                // Split into RS blocks and interleave
+                const dataBlocks = [];
+                const ecBlocks = [];
+                let offset = 0;
+                for (const [count, dLen, ecLen] of blockGroups) {
+                    for (let c = 0; c < count; c++) {
+                        const slice = dataCodewords.slice(offset, offset + dLen);
+                        offset += dLen;
+                        dataBlocks.push(slice);
+                        ecBlocks.push(rsComputeEc(slice, ecLen));
+                    }
+                }
+
+                const interleaved = [];
+                const maxD = Math.max(...dataBlocks.map(b => b.length));
+                for (let i = 0; i < maxD; i++) {
+                    for (const blk of dataBlocks) if (i < blk.length) interleaved.push(blk[i]);
+                }
+                const maxE = Math.max(...ecBlocks.map(b => b.length));
+                for (let i = 0; i < maxE; i++) {
+                    for (const blk of ecBlocks) if (i < blk.length) interleaved.push(blk[i]);
+                }
+
+                const size = 17 + ver * 4;
+                const modules = Array.from({ length: size }, () => new Int8Array(size)); // 0=unset, 1=dark, -1=light
+                const isFunc = Array.from({ length: size }, () => new Uint8Array(size));
+
+                const setFunc = (r, c, dark) => {
+                    if (r < 0 || r >= size || c < 0 || c >= size) return;
+                    modules[r][c] = dark ? 1 : -1;
+                    isFunc[r][c] = 1;
+                };
+
+                // Finder patterns + separators
+                const placeFinder = (tr, tc) => {
+                    for (let dr = -1; dr <= 7; dr++) {
+                        for (let dc = -1; dc <= 7; dc++) {
+                            const inOuter = dr >= 0 && dr <= 6 && dc >= 0 && dc <= 6;
+                            const isBorder = dr === 0 || dr === 6 || dc === 0 || dc === 6;
+                            const isCore = dr >= 2 && dr <= 4 && dc >= 2 && dc <= 4;
+                            setFunc(tr + dr, tc + dc, inOuter && (isBorder || isCore));
+                        }
+                    }
+                };
+                placeFinder(0, 0);
+                placeFinder(0, size - 7);
+                placeFinder(size - 7, 0);
+
+                // Alignment patterns
+                for (const r of alignCoords) {
+                    for (const c of alignCoords) {
+                        if (isFunc[r][c]) continue;
+                        for (let dr = -2; dr <= 2; dr++) {
+                            for (let dc = -2; dc <= 2; dc++) {
+                                const dark = Math.abs(dr) === 2 || Math.abs(dc) === 2 || (dr === 0 && dc === 0);
+                                setFunc(r + dr, c + dc, dark);
+                            }
+                        }
+                    }
+                }
+
+                // Timing patterns
+                for (let i = 8; i < size - 8; i++) {
+                    if (!isFunc[6][i]) setFunc(6, i, i % 2 === 0);
+                    if (!isFunc[i][6]) setFunc(i, 6, i % 2 === 0);
+                }
+
+                // Dark module + reserve format info
+                setFunc(size - 8, 8, true);
+                for (let i = 0; i < 9; i++) {
+                    if (!isFunc[8][i]) isFunc[8][i] = 1;
+                    if (!isFunc[i][8]) isFunc[i][8] = 1;
+                }
+                for (let i = 0; i < 8; i++) {
+                    isFunc[8][size - 1 - i] = 1;
+                    if (i < 7) isFunc[size - 1 - i][8] = 1;
+                }
+
+                // Version info for V7+
+                if (ver >= 7 && VERSION_INFO[ver]) {
+                    const vBits = VERSION_INFO[ver];
+                    for (let i = 0; i < 18; i++) {
+                        const bit = ((vBits >>> i) & 1) === 1;
+                        const r = Math.floor(i / 3);
+                        const c = size - 11 + (i % 3);
+                        setFunc(r, c, bit);
+                        setFunc(c, r, bit);
+                    }
+                }
+
+                // Place data bits zig-zag
+                const dataBits = [];
+                for (const cw of interleaved) {
+                    for (let b = 7; b >= 0; b--) dataBits.push((cw >>> b) & 1);
+                }
+                let bitIdx = 0;
+                let upward = true;
+                for (let right = size - 1; right >= 1; right -= 2) {
+                    if (right === 6) right = 5;
+                    for (let step = 0; step < size; step++) {
+                        const r = upward ? size - 1 - step : step;
+                        for (let dx = 0; dx < 2; dx++) {
+                            const c = right - dx;
+                            if (!isFunc[r][c]) {
+                                const bit = bitIdx < dataBits.length ? dataBits[bitIdx++] : 0;
+                                modules[r][c] = bit ? 1 : -1;
+                            }
+                        }
+                    }
+                    upward = !upward;
+                }
+
+                // Apply mask 0 ((r + c) % 2 === 0) and write format info
+                for (let r = 0; r < size; r++) {
+                    for (let c = 0; c < size; c++) {
+                        if (!isFunc[r][c] && ((r + c) % 2 === 0)) {
+                            modules[r][c] = -modules[r][c];
+                        }
+                    }
+                }
+                const fmt = FORMAT_INFO_L[0];
+                for (let i = 0; i < 15; i++) {
+                    const dark = ((fmt >>> i) & 1) === 1;
+                    if (i < 6) modules[i][8] = dark ? 1 : -1;
+                    else if (i < 8) modules[i + 1][8] = dark ? 1 : -1;
+                    else modules[size - 15 + i][8] = dark ? 1 : -1;
+
+                    if (i < 8) modules[8][size - 1 - i] = dark ? 1 : -1;
+                    else if (i < 9) modules[8][15 - i] = dark ? 1 : -1;
+                    else modules[8][14 - i] = dark ? 1 : -1;
+                }
+
+                return { size, modules };
+            }
+
+            function renderToCanvas(canvas, text) {
+                const { size, modules } = encode(text);
+                const quiet = 3;
+                const total = size + quiet * 2;
+                const scale = Math.max(4, Math.floor(220 / total));
+                canvas.width = total * scale;
+                canvas.height = total * scale;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = '#0f172a';
+                for (let r = 0; r < size; r++) {
+                    for (let c = 0; c < size; c++) {
+                        if (modules[r][c] === 1) {
+                            ctx.fillRect((c + quiet) * scale, (r + quiet) * scale, scale, scale);
+                        }
+                    }
+                }
+            }
+
+            return { renderToCanvas };
+        })();
+
+        function initYouthUnionVietQr() {
+            const memberSelect = document.getElementById('qrMemberSelect');
+            const customInput = document.getElementById('qrCustomNoteInput');
+            const qrImg = document.getElementById('vietQrImage');
+            const qrCanvas = document.getElementById('vietQrFallbackCanvas');
+            const noteDisplay = document.getElementById('qrTransferNoteDisplay');
+            const copyStkBtn = document.getElementById('copyStkBtn');
+            const copyNoteBtn = document.getElementById('copyNoteBtn');
+            const copyFullBtn = document.getElementById('copyFullBankInfoBtn');
+            const downloadBtn = document.getElementById('downloadVietQrBtn');
+            const deadlinePill = document.getElementById('youthUnionDeadlinePill');
+
+            if (!qrImg || !noteDisplay) return;
+
+            // Update deadline pill remaining days
+            if (deadlinePill) {
+                const now = new Date();
+                const deadline = new Date('2027-01-05T23:59:00');
+                const daysLeft = Math.max(0, Math.ceil((deadline - now) / (1000 * 60 * 60 * 24)));
+                deadlinePill.textContent = daysLeft > 0
+                    ? `⏳ Hạn chót Chi đoàn: 05/01/2027 (Còn ${daysLeft} ngày)`
+                    : `🔴 Hôm nay là hạn chót Chi đoàn: 05/01/2027`;
+            }
+
+            // Populate DA26KDA member options
+            if (memberSelect && typeof EXAM_ROSTER_DATA !== 'undefined') {
+                const sorted = [...EXAM_ROSTER_DATA].sort((a, b) => a.mssv.localeCompare(b.mssv));
+                sorted.forEach(sv => {
+                    const compactName = toAsciiTransferText(sv.name).replace(/\s+/g, '');
+                    const opt = document.createElement('option');
+                    opt.value = `${compactName} ${sv.mssv}`;
+                    opt.textContent = `${sv.mssv} — ${sv.name}`;
+                    memberSelect.appendChild(opt);
+                });
+            }
+
+            let currentTransferNote = 'NguyenVanA 112126001 - DoanphiCTTN';
+            let usingFallbackCanvas = false;
+
+            function syncQrCode(prefixRaw) {
+                const cleanPrefix = toAsciiTransferText(prefixRaw);
+                currentTransferNote = cleanPrefix
+                    ? `${cleanPrefix} - DoanphiCTTN`
+                    : 'NguyenVanA 112126001 - DoanphiCTTN';
+
+                noteDisplay.textContent = currentTransferNote;
+
+                // Always render EMVCo VietQR payload on fallback canvas so it is ready anytime
+                const emvPayload = buildTechcombankVietQrPayload(currentTransferNote);
+                if (qrCanvas) {
+                    MiniQrGenerator.renderToCanvas(qrCanvas, emvPayload);
+                }
+
+                // Update VietQR QuickLink image
+                const url = `https://img.vietqr.io/image/TCB-10018222222-compact2.png?amount=50000&addInfo=${encodeURIComponent(currentTransferNote)}&accountName=KIM%20TUAN%20AN`;
+                qrImg.onerror = () => {
+                    usingFallbackCanvas = true;
+                    qrImg.style.display = 'none';
+                    if (qrCanvas) qrCanvas.style.display = 'block';
+                };
+                qrImg.onload = () => {
+                    usingFallbackCanvas = false;
+                    qrImg.style.display = 'block';
+                    if (qrCanvas) qrCanvas.style.display = 'none';
+                };
+                qrImg.src = url;
+            }
+
+            if (memberSelect) {
+                memberSelect.addEventListener('change', () => {
+                    if (customInput) customInput.value = memberSelect.value;
+                    syncQrCode(memberSelect.value);
+                });
+            }
+
+            if (customInput) {
+                customInput.addEventListener('input', () => {
+                    if (memberSelect && memberSelect.value !== '') memberSelect.value = '';
+                    syncQrCode(customInput.value);
+                });
+            }
+
+            function copyWithFeedback(btn, text, defaultLabel) {
+                if (!btn) return;
+                navigator.clipboard?.writeText(text).catch(() => {});
+                btn.textContent = '✓ Đã chép';
+                btn.classList.add('is-copied');
+                setTimeout(() => {
+                    btn.textContent = defaultLabel;
+                    btn.classList.remove('is-copied');
+                }, 1800);
+            }
+
+            if (copyStkBtn) {
+                copyStkBtn.addEventListener('click', () => copyWithFeedback(copyStkBtn, '10018222222', 'Sao chép'));
+            }
+            if (copyNoteBtn) {
+                copyNoteBtn.addEventListener('click', () => copyWithFeedback(copyNoteBtn, currentTransferNote, 'Sao chép'));
+            }
+            if (copyFullBtn) {
+                copyFullBtn.addEventListener('click', () => {
+                    const fullText = `Ngân hàng: Techcombank\nSố tài khoản: 10018222222\nChủ tài khoản: Kim Tuan An\nSố tiền: 50.000đ\nNội dung CK: ${currentTransferNote}`;
+                    copyWithFeedback(copyFullBtn, fullText, '📋 Copy toàn bộ TT');
+                });
+            }
+
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', async () => {
+                    const fileName = `VietQR-DoanPhiCTTN-${toAsciiTransferText(currentTransferNote).replace(/\s+/g, '_')}.png`;
+                    try {
+                        if (!usingFallbackCanvas && qrImg.complete && qrImg.naturalWidth > 0) {
+                            const resp = await fetch(qrImg.src);
+                            const blob = await resp.blob();
+                            const blobUrl = URL.createObjectURL(blob);
+                            const a = document.createElement('a');
+                            a.href = blobUrl;
+                            a.download = fileName;
+                            document.body.appendChild(a);
+                            a.click();
+                            a.remove();
+                            URL.revokeObjectURL(blobUrl);
+                            return;
+                        }
+                    } catch (e) {
+                        // Fall through to canvas export
+                    }
+                    if (qrCanvas) {
+                        const a = document.createElement('a');
+                        a.href = qrCanvas.toDataURL('image/png');
+                        a.download = fileName;
+                        document.body.appendChild(a);
+                        a.click();
+                        a.remove();
+                    }
+                });
+            }
+
+            // Initial render
+            syncQrCode('');
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             initPreloaderSequence();
             initNeuralCircuitCanvas();
             initNavigationAndTheme();
             initNoticeBoard();
+            initYouthUnionVietQr();
             initDirectoryControls();
             initCampusTabs();
             initModalEvents();
