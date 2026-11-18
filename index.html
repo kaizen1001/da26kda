@@ -3919,6 +3919,41 @@
             text-align: center;
         }
 
+        .imp-qr-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            background: rgba(15, 23, 42, 0.45);
+            border: 1.5px dashed rgba(56, 189, 248, 0.42);
+            border-radius: 14px;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        html[data-theme="light"] .imp-qr-placeholder {
+            background: rgba(241, 245, 249, 0.85);
+        }
+
+        .imp-qr-placeholder-icon {
+            font-size: 1.65rem;
+            line-height: 1;
+        }
+
+        .imp-qr-placeholder-text {
+            font-size: 0.82rem;
+            font-weight: 600;
+            line-height: 1.45;
+            color: var(--text-secondary);
+        }
+
+        .imp-qr-visual-wrap.is-hidden,
+        .imp-qr-placeholder.is-hidden {
+            display: none !important;
+        }
+
         .imp-bank-box {
             display: flex;
             flex-direction: column;
@@ -4407,11 +4442,18 @@
                                 <input type="text" class="imp-qr-input" id="qrCustomNoteInput" placeholder="Hoặc nhập: HoTen MSSV (VD: NguyenVanA 112126001)">
                             </div>
 
-                            <div class="imp-qr-visual-wrap" id="vietQrVisualBox">
+                            <div class="imp-qr-placeholder" id="vietQrPlaceholderBox">
+                                <div class="imp-qr-placeholder-icon">🔒</div>
+                                <div class="imp-qr-placeholder-text">
+                                    Vui lòng <strong>chọn tên của bạn</strong> ở danh sách trên (hoặc nhập <strong>Họ tên + MSSV</strong>) để hiển thị mã QR chuyển khoản cá nhân.
+                                </div>
+                            </div>
+
+                            <div class="imp-qr-visual-wrap is-hidden" id="vietQrVisualBox" style="display: none;">
                                 <img
                                     id="vietQrImage"
                                     class="imp-qr-img"
-                                    src="https://img.vietqr.io/image/TCB-10018222222-compact2.png?amount=50000&addInfo=NguyenVanA%20112126001%20-%20DoanphiCTTN&accountName=KIM%20TUAN%20AN"
+                                    src=""
                                     alt="Mã QR chuyển khoản Techcombank - Kim Tuan An - 50.000đ"
                                     crossorigin="anonymous"
                                 />
@@ -4438,14 +4480,14 @@
                                 <div class="imp-bank-row" style="align-items: flex-start;">
                                     <span class="imp-bank-lbl" style="white-space: nowrap;">Nội dung CK:</span>
                                     <div style="display: flex; align-items: center; gap: 0.45rem; justify-content: flex-end; flex-wrap: wrap;">
-                                        <span class="imp-bank-val" id="qrTransferNoteDisplay" style="color: var(--neon-gold);">NguyenVanA 112126001 - DoanphiCTTN</span>
-                                        <button type="button" class="imp-copy-btn" id="copyNoteBtn">Sao chép</button>
+                                        <span class="imp-bank-val" id="qrTransferNoteDisplay" style="color: var(--text-muted); font-style: italic;">Chưa chọn tên đoàn viên</span>
+                                        <button type="button" class="imp-copy-btn" id="copyNoteBtn" style="display: none;">Sao chép</button>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="imp-qr-actions">
-                                <button type="button" class="imp-action-btn is-primary" id="downloadVietQrBtn">⬇️ Tải ảnh QR</button>
+                                <button type="button" class="imp-action-btn is-primary" id="downloadVietQrBtn" style="display: none;">⬇️ Tải ảnh QR</button>
                                 <button type="button" class="imp-action-btn" id="copyFullBankInfoBtn">📋 Copy toàn bộ TT</button>
                             </div>
                         </div>
@@ -6843,6 +6885,8 @@
         function initYouthUnionVietQr() {
             const memberSelect = document.getElementById('qrMemberSelect');
             const customInput = document.getElementById('qrCustomNoteInput');
+            const qrPlaceholderBox = document.getElementById('vietQrPlaceholderBox');
+            const qrVisualBox = document.getElementById('vietQrVisualBox');
             const qrImg = document.getElementById('vietQrImage');
             const qrCanvas = document.getElementById('vietQrFallbackCanvas');
             const noteDisplay = document.getElementById('qrTransferNoteDisplay');
@@ -6876,16 +6920,45 @@
                 });
             }
 
-            let currentTransferNote = 'NguyenVanA 112126001 - DoanphiCTTN';
+            let currentTransferNote = '';
             let usingFallbackCanvas = false;
 
             function syncQrCode(prefixRaw) {
                 const cleanPrefix = toAsciiTransferText(prefixRaw);
-                currentTransferNote = cleanPrefix
-                    ? `${cleanPrefix} - DoanphiCTTN`
-                    : 'NguyenVanA 112126001 - DoanphiCTTN';
 
+                if (!cleanPrefix) {
+                    currentTransferNote = '';
+                    if (qrVisualBox) {
+                        qrVisualBox.classList.add('is-hidden');
+                        qrVisualBox.style.display = 'none';
+                    }
+                    if (qrPlaceholderBox) {
+                        qrPlaceholderBox.classList.remove('is-hidden');
+                        qrPlaceholderBox.style.display = 'flex';
+                    }
+                    if (downloadBtn) downloadBtn.style.display = 'none';
+                    if (copyNoteBtn) copyNoteBtn.style.display = 'none';
+                    noteDisplay.textContent = 'Chưa chọn tên đoàn viên';
+                    noteDisplay.style.color = 'var(--text-muted)';
+                    noteDisplay.style.fontStyle = 'italic';
+                    return;
+                }
+
+                currentTransferNote = `${cleanPrefix} - DoanphiCTTN`;
                 noteDisplay.textContent = currentTransferNote;
+                noteDisplay.style.color = 'var(--neon-gold)';
+                noteDisplay.style.fontStyle = 'normal';
+
+                if (qrPlaceholderBox) {
+                    qrPlaceholderBox.classList.add('is-hidden');
+                    qrPlaceholderBox.style.display = 'none';
+                }
+                if (qrVisualBox) {
+                    qrVisualBox.classList.remove('is-hidden');
+                    qrVisualBox.style.display = 'flex';
+                }
+                if (downloadBtn) downloadBtn.style.display = '';
+                if (copyNoteBtn) copyNoteBtn.style.display = '';
 
                 // Always render EMVCo VietQR payload on fallback canvas so it is ready anytime
                 const emvPayload = buildTechcombankVietQrPayload(currentTransferNote);
@@ -6941,7 +7014,8 @@
             }
             if (copyFullBtn) {
                 copyFullBtn.addEventListener('click', () => {
-                    const fullText = `Ngân hàng: Techcombank\nSố tài khoản: 10018222222\nChủ tài khoản: Kim Tuan An\nSố tiền: 50.000đ\nNội dung CK: ${currentTransferNote}`;
+                    const noteVal = currentTransferNote || '[HoTen MSSV] - DoanphiCTTN';
+                    const fullText = `Ngân hàng: Techcombank\nSố tài khoản: 10018222222\nChủ tài khoản: Kim Tuan An\nSố tiền: 50.000đ\nNội dung CK: ${noteVal}`;
                     copyWithFeedback(copyFullBtn, fullText, '📋 Copy toàn bộ TT');
                 });
             }
